@@ -1,0 +1,15 @@
+# ARNÉS OPENCODE — PP3 · CICLO 2026 (IES9018)
+
+## 1. Reglas de Negocio Inmutables
+- Los repos de alumnos pertenecen a la org `IES9018` con formato `<nombre_alumno>-<nombre_proyecto>`.
+- Prohibición absoluta de forks: creación directa en la organización.
+- El docente audita como Capataz/Arquitecto de Obra; sus revisiones son vinculantes.
+
+## 2. Motor Local
+- OpenCode es el único motor autorizado para generación/asistencia de código en esta materia.
+- La configuración exclusiva del arnés son este archivo e `INSTRUCTIONS.md`. Ningún otro archivo de configuración de agentes forma parte del estándar.
+
+## 3. Flujo Determinista
+- Toda tarea parte de una `SPEC.md` aprobada; cambios sin especificación se rechazan.
+- Commits convencionales (`feat|fix|docs|chore: descripción`).
+- Los hitos de sprint se siguen en `/sprints` según `sprint-config.json`.

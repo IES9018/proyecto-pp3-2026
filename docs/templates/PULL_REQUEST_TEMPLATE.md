@@ -1,10 +1,8 @@
-## 📝 Descripción del Cambio
-Breve resumen de la funcionalidad o corrección implementada.
+# ⚠️ PLANTILLA MOVIDA
 
-## 🔗 Issue Vinculada
-Closes # (número de issue)
+La plantilla oficial de Pull Request ahora vive en:
 
-## 🧪 Checklist de Calidad y SDD
-- [ ] Se adjunta o actualizó el archivo `SPEC.md` referente a esta tarea.
-- [ ] El código pasa los tests y no introduce advertencias o `any` explícitos.
-- [ ] La IA fue utilizada con restricciones de arnés y el código fue completamente revisado por el estudiante.
+**`.github/PULL_REQUEST_TEMPLATE.md`**
+
+GitHub la detecta automáticamente desde esa ubicación y la aplica a todos los PRs del repositorio.
+Este archivo se conserva solo como referencia histórica de la ruta anterior.

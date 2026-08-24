@@ -1,0 +1,41 @@
+{
+  "sprint_id": "SPRINT-01-2026",
+  "course_id": "PP3-2026",
+  "start_date": "2026-08-24",
+  "end_date": "2026-09-18",
+  "repository_ids": ["IES9018/proyecto-pp3-2026"],
+  "tasks": [
+    {
+      "id": "PP3-S1-T1",
+      "description": "Crear repositorio individual <nombre_alumno>-<nombre_proyecto> dentro de la organizacion IES9018",
+      "type": "setup",
+      "priority": "alta",
+      "dependencies": []
+    },
+    {
+      "id": "PP3-S1-T2",
+      "description": "Subir la especificacion inicial SPEC.md del proyecto traido de PP2",
+      "type": "especificacion",
+      "priority": "alta",
+      "dependencies": ["PP3-S1-T1"]
+    },
+    {
+      "id": "PP3-S1-T3",
+      "description": "Configurar el arnes de control .opencoderules o .cursorrules en la raiz del proyecto",
+      "type": "arnes",
+      "priority": "media",
+      "dependencies": ["PP3-S1-T1"]
+    },
+    {
+      "id": "PP3-S1-T4",
+      "description": "Vincular el proyecto al tablero Kanban de GitHub Projects de la materia",
+      "type": "integracion",
+      "priority": "media",
+      "dependencies": ["PP3-S1-T1"]
+    }
+  ],
+  "metadata": {
+    "description": "Sprint 1 PP3 (24 Ago - 18 Sep): repositorios individuales, SPEC inicial, arneses y Kanban",
+    "objectives": "Alumno operativo end-to-end: repo propio en la org, especificacion SDD versionada, arnes de IA configurado y tablero vinculado"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "sprint_id": "PP3-2026-S1",
+  "sprint_title": "Setup de Repositorios, Git Flow y Primera Evaluación de Auditoría Crítica",
+  "target_repository": "IES9018/proyecto-pp3-2026",
+  "rules": {
+    "protected_branches": ["main", "develop"],
+    "require_pr": true,
+    "min_reviewers": 1,
+    "disallow_direct_push": ["main", "develop"],
+    "enforce_conventional_commits": true
+  },
+  "deliverables": [
+    {
+      "id": "DEL-S1-01",
+      "name": "Estructura Base del Repositorio Alumno",
+      "path": "/",
+      "type": "REPOSITORY_SETUP"
+    },
+    {
+      "id": "DEL-S1-02",
+      "name": "Plantilla de Pull Request",
+      "path": ".github/PULL_REQUEST_TEMPLATE.md",
+      "type": "MARKDOWN_FILE"
+    },
+    {
+      "id": "DEL-S1-03",
+      "name": "Informe de Auditoría Crítica (IA/Código)",
+      "path": "docs/auditoria/auditoria-sprint1.md",
+      "type": "CRITICAL_SUPERVISION_REPORT"
+    }
+  ]
+}

@@ -32,12 +32,39 @@ Siempre en la carpeta del sprint activo:
 
 ```
 sprints/
-└── sprint-1/            ← SPRINT VIGENTE (24 ago – 18 sep)
-    ├── CHECKLIST.md     ← tus objetivos tildables
-    └── sprint-config.json
-sprint-pp3-config.json   ← contrato SSOT: reglas + entregables DEL-S1-01..03
-course-state.json        ← estado global de infraestructura e hitos
-```
+├
+───
+ sprint-1/            
+ ← 
+SPRINT VIGENTE (24 ago - 18 sep)
+│
+   
+├
+───
+ CHECKLIST.md     
+ ← 
+tus objetivos tildables
+│
+   
+└
+───
+ sprint-config.json
+├
+───
+ sprint-2/            
+ ← 
+PROXIMO (21 sep - 16 oct): nucleo funcional + calidad local
+├
+───
+ sprint-3/            
+ ← 
+PLANIFICADO (19 oct - 13 nov): seguridad + despliegue
+└
+───
+ cierre               
+ ← 
+17 nov: pipeline CI + release v0.1.0 + informe final
+``````
 
 Entregables formales del Sprint 1 (definición exacta): [sprint-pp3-config.json](./sprint-pp3-config.json)
 

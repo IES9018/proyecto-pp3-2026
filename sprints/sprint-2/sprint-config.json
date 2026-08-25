@@ -1,0 +1,55 @@
+{
+  "sprint_id": "PP3-2026-S2",
+  "course_id": "PP3-2026",
+  "start_date": "2026-09-21",
+  "end_date": "2026-10-16",
+  "repository_ids": ["IES9018/proyecto-pp3-2026"],
+  "tasks": [
+    {
+      "id": "PP3-S2-T1",
+      "description": "Actualizar SPEC.md a v2: restricciones arquitectonicas citando ADRs y changelog v1->v2 (consigna TP2)",
+      "type": "especificacion",
+      "priority": "alta",
+      "dependencies": []
+    },
+    {
+      "id": "PP3-S2-T2",
+      "description": "Documentar diagramas C4 contexto y contenedores en docs/arquitectura del repo alumno, trazables a SPEC y ADRs",
+      "type": "arquitectura",
+      "priority": "alta",
+      "dependencies": ["PP3-S2-T1"]
+    },
+    {
+      "id": "PP3-S2-T3",
+      "description": "Implementar el nucleo funcional: features criticos RF-01..RF-n del SPEC operativos en entorno local",
+      "type": "implementacion",
+      "priority": "alta",
+      "dependencies": ["PP3-S2-T2"]
+    },
+    {
+      "id": "PP3-S2-T4",
+      "description": "Aplicar personas journeys y wireframes (consigna TP3) a las dos pantallas criticas del nucleo",
+      "type": "interfaz",
+      "priority": "media",
+      "dependencies": ["PP3-S2-T3"]
+    },
+    {
+      "id": "PP3-S2-T5",
+      "description": "Construir suite de pruebas unitarias con minimo 10 tests verdes en ejecucion local y reporte en docs/pruebas/reporte-sprint2.md",
+      "type": "testing",
+      "priority": "alta",
+      "dependencies": ["PP3-S2-T3"]
+    },
+    {
+      "id": "PP3-S2-T6",
+      "description": "Redactar docs/auditoria/auditoria-sprint2.md con errores hallados en codigo asistido por IA y correcciones con evidencia",
+      "type": "auditoria",
+      "priority": "alta",
+      "dependencies": ["PP3-S2-T5", "PP3-S2-T2"]
+    }
+  ],
+  "metadata": {
+    "description": "Sprint 2 PP3 (21 Sep - 16 Oct): SPEC v2, arquitectura C4 viva, nucleo funcional, pantallas criticas y calidad local",
+    "objectives": "Pasar de especificacion a software corriendo localmente con decisiones documentadas y pruebas que respalden el nucleo"
+  }
+}

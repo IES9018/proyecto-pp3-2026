@@ -1,12 +1,102 @@
-# Práctica Profesionalizante III (PP3) — Ciclo Lectivo 2026
-**Institución:** IES 9-018 "Gobernador Celso Jaque"
-**Cátedra:** Práctica Profesionalizante III
-**Profesor:** Paulo Alvarez
+# PP3 — Coordinación del Proyecto Integrador 🚀
 
-## 🎯 Propósito del Repositorio
-Este repositorio es el punto central de coordinación para la ejecución del Proyecto Integrador 2026. Los estudiantes ejecutarán y desplegarán la evolución del software diseñado en PP2 (2025), aplicando metodologías ágiles, auditoría continua con IA y desarrollo guiado por especificaciones (SDD).
+**Práctica Profesionalizante III · IES 9-018 · Ciclo 2026**
+Tecnicatura Superior en Desarrollo de Software · 3° Año · Prof. Paulo Alvarez
 
-## 📋 Reglas de Gobernanza e Inserción
-1. **Política de Repositorios Individuales:** Queda **estrictamente prohibido el uso de Forks personales**. Todo proyecto de alumno debe crearse como un repositorio propio dentro de la organización de GitHub `IES9018` bajo la nomenclatura: `<nombre_alumno>-<nombre_proyecto>` (ej. `raul-crm`).
-2. **Auditoría Docente:** El docente actúa como *Capataz/Arquitecto de Obra*, realizando auditorías deterministas mediante CLI y dejando Code Reviews en los Pull Requests de cada repositorio.
-3. **Mesa de Ayuda y Sprints:** Revisa la carpeta `/sprints` para ver el Checklist del Sprint activo.
+> Este es el **repo de coordinación de la cátedra**: acá está el checklist del sprint vigente, las reglas de Git Flow y la rúbrica de auditoría. Tu código vive en **tu repositorio individual** dentro de la organización `IES9018`.
+>
+> Teoría de arquitectura: [`ADI-teoria-y-recursos`](https://github.com/IES9018/ADI-teoria-y-recursos) · Consignas y plantillas ADI: [`proyecto-adi-2026`](https://github.com/IES9018/proyecto-adi-2026)
+
+---
+
+## 🚦 EMPEZÁ ACÁ (Sprint 1 — 24 ago al 18 sep)
+
+| Paso | Qué hacer | Evidencia esperada |
+|---|---|---|
+| 1 | Leé el **CHECKLIST del sprint** completo | [sprints/sprint-1/CHECKLIST.md](./sprints/sprint-1/CHECKLIST.md) |
+| 2 | Creá tu repo individual `<nombre_alumno>-<nombre_proyecto>` | ej.: `raul-crm` — público, en `IES9018`, **sin forks** |
+| 3 | Subí tu `SPEC.md` inicial (proyecto traído de PP2) | raíz de tu repo |
+| 4 | Configurá tu arnés `.opencoderules` (+ `INSTRUCTIONS.md`) | raíz de tu repo |
+| 5 | Vinculá tu repo al tablero Kanban de la materia | captura/enlace en el tablero |
+| 6 | Al cerrar: completá el informe de auditoría crítica | `docs/auditoria/auditoria-sprint1.md` en TU repo |
+
+Checklist detallado: [sprints/sprint-1/CHECKLIST.md](./sprints/sprint-1/CHECKLIST.md)
+
+---
+
+## 🎯 ¿Dónde está la tarea de hoy?
+
+Siempre en la carpeta del sprint activo:
+
+```
+sprints/
+└── sprint-1/            ← SPRINT VIGENTE (24 ago – 18 sep)
+    ├── CHECKLIST.md     ← tus objetivos tildables
+    └── sprint-config.json
+sprint-pp3-config.json   ← contrato SSOT: reglas + entregables DEL-S1-01..03
+course-state.json        ← estado global de infraestructura e hitos
+```
+
+Entregables formales del Sprint 1 (definición exacta): [sprint-pp3-config.json](./sprint-pp3-config.json)
+
+---
+
+## 🔀 Git Flow obligatorio (aplicado por plataforma)
+
+```
+feature/<tema>  →  PR a develop (1 revisión)  →  PR develop → main (1 revisión)
+```
+
+* Push directo a `main` o `develop`: **BLOQUEADO** (ni siquiera el docente puede).
+* Commits convencionales: `feat:` `fix:` `docs:` `ci:` `chore:`.
+* Todo PR usa la plantilla oficial con checklists de calidad, seguridad y trazabilidad.
+
+Plantilla automática: [.github/PULL_REQUEST_TEMPLATE.md](./.github/PULL_REQUEST_TEMPLATE.md)
+Referencia visual: [docs/arquitectura/DIAGRAMAS_REFERENCIA.md](./docs/arquitectura/DIAGRAMAS_REFERENCIA.md)
+
+---
+
+## 📊 Evaluación
+
+### Criterios oficiales del espacio (contrato pedagógico)
+
+| Área | % |
+|---|---|
+| Implementación (funcionalidad y calidad de código) | 40% |
+| Testing y calidad | 20% |
+| Seguridad | 15% |
+| Documentación técnica y legal | 10% |
+| Gestión del proyecto (commits, PRs, issues) | 15% |
+
+### Instrumento del Sprint 1
+
+Rúbrica determinista de auditoría: [docs/auditoria/RUBRICA_AUDITORIA_S1.md](./docs/auditoria/RUBRICA_AUDITORIA_S1.md)
+Tu informe: `auditoria-sprint1.md` documentando errores hallados en código asistido por IA y sus correcciones.
+
+Marco completo: [Programa PP3](./Planificaciones/Programa-Practica-Profesionalizante-III-2026.md) · [Contrato pedagógico](./Planificaciones/Contrato-Pedagogico-Practica-Profesionalizante-III-2026.md)
+
+---
+
+## 📂 Mapa de este repo
+
+| Ruta | Qué hay |
+|---|---|
+| `sprints/sprint-*/` | Checklists y configuración de cada sprint |
+| `sprint-pp3-config.json` | SSOT: reglas de Git Flow y entregables por entregable-ID |
+| `course-state.json` | Estado de infraestructura e hitos de ambas cátedras |
+| `Planificaciones/` | Programa oficial + Contrato pedagógico firmados |
+| `docs/auditoria/` | Rúbricas deterministas y actas de auditoría |
+| `.github/PULL_REQUEST_TEMPLATE.md` | Plantilla que se autocompleta en cada PR |
+| `INSTRUCCIONES_ORGANIZACION.md` / `INSTRUCTIONS.md` | Reglas + arnés local OpenCode |
+| `INDICE_SEGUIMIENTO.md` · `LISTA_ESTUDIANTES.md` · `seguimiento-estudiantes.json` | Seguimiento docente |
+
+---
+
+## ❓ FAQ rápida
+
+| Pregunta | Respuesta corta |
+|---|---|
+| ¿Hago fork? | **NO.** Creás tu repo propio en `IES9018`. |
+| ¿Puedo pushear directo a main/develop de MI repo? | No: PR con al menos 1 aprobación (régimen igual al de esta coordinación). |
+| ¿Dónde está el proyecto que diseñé en PP2? | Lo ejecutás vos; el modelo de referencia está en [proyecto-adi-2026](https://github.com/IES9018/proyecto-adi-2026). |
+| ¿Cómo declaro un Non-Goal? | Sección 3 de tu `SPEC.md`. Ver [SPEC-template ADI](https://github.com/IES9018/proyecto-adi-2026/blob/main/templates/SPEC-template.md). |

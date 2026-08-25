@@ -11,7 +11,7 @@
 - [ ] `docs/adr/ADR-001-stack-tecnologico.md` con **≥ 2 alternativas descartadas**
 
 ## Fase 2 — Arnés de IA
-- [ ] `.opencoderules` en la raíz: alcance permitido + estándares obligatorios + prácticas prohibidas
+- [ ] `.opencoderules` en la raíz: alcance permitido + estándares obligatorios + prácticas prohibidas *(usás otro agente? equivalente nativo: [entornos](https://github.com/IES9018/proyecto-adi-2026/blob/main/entornos-de-desarrollo.md))*
 - [ ] (opcional) `INSTRUCTIONS.md` complementario
 
 ## Fase 3 — Flujo Git (regla dual)

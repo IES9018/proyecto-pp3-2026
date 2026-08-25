@@ -3,7 +3,9 @@
   "course_id": "PP3-2026",
   "start_date": "2026-08-24",
   "end_date": "2026-09-18",
-  "repository_ids": ["IES9018/proyecto-pp3-2026"],
+  "repository_ids": [
+    "IES9018/proyecto-pp3-2026"
+  ],
   "tasks": [
     {
       "id": "PP3-S1-T1",
@@ -17,21 +19,27 @@
       "description": "Subir la especificacion inicial SPEC.md del proyecto traido de PP2",
       "type": "especificacion",
       "priority": "alta",
-      "dependencies": ["PP3-S1-T1"]
+      "dependencies": [
+        "PP3-S1-T1"
+      ]
     },
     {
       "id": "PP3-S1-T3",
-      "description": "Configurar el arnes de control .opencoderules (complementado con INSTRUCTIONS.md opcional) en la raiz del proyecto",
+      "description": "Configurar el arnes de control nativo del agente usado (.opencoderules para OpenCode; equivalentes por herramienta en entornos-de-desarrollo.md)",
       "type": "arnes",
       "priority": "media",
-      "dependencies": ["PP3-S1-T1"]
+      "dependencies": [
+        "PP3-S1-T1"
+      ]
     },
     {
       "id": "PP3-S1-T4",
       "description": "Vincular el proyecto al tablero Kanban de GitHub Projects de la materia",
       "type": "integracion",
       "priority": "media",
-      "dependencies": ["PP3-S1-T1"]
+      "dependencies": [
+        "PP3-S1-T1"
+      ]
     }
   ],
   "metadata": {

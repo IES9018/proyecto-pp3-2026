@@ -20,6 +20,8 @@ Tecnicatura Superior en Desarrollo de Software · 3° Año · Prof. Paulo Alvare
 | 5 | Vinculá tu repo al tablero Kanban de la materia | captura/enlace en el tablero |
 | 6 | Al cerrar: completá el informe de auditoría crítica | `docs/auditoria/auditoria-sprint1.md` en TU repo |
 
+> 🗓️ Roadmap de TPs ADI + sprints: [CRONOGRAMA-TPs-2026](https://github.com/IES9018/proyecto-adi-2026/blob/main/Planificaciones/CRONOGRAMA-TPs-2026.md)
+
 Checklist detallado: [sprints/sprint-1/CHECKLIST.md](./sprints/sprint-1/CHECKLIST.md)
 
 ---

@@ -1,32 +1,100 @@
 {
-  "sprint_id": "PP3-2026-S1",
-  "sprint_title": "Setup de Repositorios, Git Flow y Primera Evaluación de Auditoría Crítica",
+  "curso": "PP3-2026",
+  "titulo": "Practica Profesionalizante III - Contrato operativo de sprints",
   "target_repository": "IES9018/proyecto-pp3-2026",
+  "fuente_verdad_de": ["reglas de Git Flow", "entregables por ID (DEL-SN-XX)", "fechas de sprints"],
+  "actualizado": "2026-08-26",
+  "evaluacion_oficial_del_espacio": {
+    "fuente": "Planificaciones/Contrato-Pedagogico-Practica-Profesionalizante-III-2026.md",
+    "implementacion_funcionalidad_y_calidad": 40,
+    "testing_y_calidad": 20,
+    "seguridad": 15,
+    "documentacion_tecnica_y_legal": 10,
+    "gestion_del_proyecto": 15,
+    "nota": "Los pesos de cada rubrica de sprint son instrumentos del periodo y deben declararlo explicitamente"
+  },
   "rules": {
     "protected_branches": ["main", "develop"],
     "require_pr": true,
     "min_reviewers": 1,
     "disallow_direct_push": ["main", "develop"],
-    "enforce_conventional_commits": true
+    "enforce_conventional_commits": true,
+    "modelo_repositorio_alumno": "repo individual <nombre_alumno>-<nombre_proyecto> dentro de IES9018, sin forks",
+    "flujo_alumno": "rama feature/<tema> -> PR -> self-merge con checklists -> auditoria docente posterior"
   },
-  "deliverables": [
+  "sprints": [
     {
-      "id": "DEL-S1-01",
-      "name": "Estructura Base del Repositorio Alumno",
-      "path": "/",
-      "type": "REPOSITORY_SETUP"
+      "id": "PP3-2026-S1",
+      "nombre": "Setup de Repositorios, Git Flow y Primera Evaluacion de Auditoria Critica",
+      "estado": "VIGENTE",
+      "inicio": "2026-08-24",
+      "fin": "2026-09-18",
+      "config_detalle": "sprints/sprint-1/sprint-config.json",
+      "checklist": "sprints/sprint-1/CHECKLIST.md",
+      "rubrica": "docs/auditoria/RUBRICA_AUDITORIA_S1.md",
+      "deliverables": [
+        {"id": "DEL-S1-01", "name": "Estructura Base del Repositorio Alumno", "path": "/", "type": "REPOSITORY_SETUP"},
+        {"id": "DEL-S1-02", "name": "Plantilla de Pull Request", "path": ".github/PULL_REQUEST_TEMPLATE.md", "type": "MARKDOWN_FILE"},
+        {"id": "DEL-S1-03", "name": "Informe de Auditoria Critica (IA/Codigo)", "path": "docs/auditoria/auditoria-sprint1.md", "type": "CRITICAL_SUPERVISION_REPORT"}
+      ]
     },
     {
-      "id": "DEL-S1-02",
-      "name": "Plantilla de Pull Request",
-      "path": ".github/PULL_REQUEST_TEMPLATE.md",
-      "type": "MARKDOWN_FILE"
+      "id": "PP3-2026-S2",
+      "nombre": "Nucleo Funcional y Calidad Local",
+      "estado": "PLANIFICADO",
+      "inicio": "2026-09-21",
+      "fin": "2026-10-16",
+      "config_detalle": "sprints/sprint-2/sprint-config.json",
+      "checklist": "sprints/sprint-2/CHECKLIST.md",
+      "rubrica": "se publica el dia de apertura del sprint (misma mecanica que RUBRICA_AUDITORIA_S1)",
+      "insumos_ADI": [
+        {"tp": "TP2 Arquitectura Visible", "aporte": "SPEC v2 + diagramas C4 + ADR-002/003", "abierto": "2026-09-15", "entrega": "2026-09-29"},
+        {"tp": "TP3 Diseno Interfaces HCI", "aporte": "personas, journeys, wireframes pantallas criticas", "abierto": "2026-09-29", "entrega": "2026-10-13"}
+      ],
+      "deliverables": [
+        {"id": "DEL-S2-01", "name": "Nucleo funcional segun SPEC v2 (features criticos operativos localmente)", "path": "/", "type": "FEATURE_IMPLEMENTATION"},
+        {"id": "DEL-S2-02", "name": "Diagramas C4 contexto y contenedores del proyecto alumno", "path": "docs/arquitectura/", "type": "ARCHITECTURE_DOCS"},
+        {"id": "DEL-S2-03", "name": "Suite de pruebas unitarias (minimo 10 verdes) con reporte", "path": "docs/pruebas/reporte-sprint2.md", "type": "TEST_REPORT"},
+        {"id": "DEL-S2-04", "name": "Informe de Auditoria Critica S2", "path": "docs/auditoria/auditoria-sprint2.md", "type": "CRITICAL_SUPERVISION_REPORT"}
+      ]
     },
     {
-      "id": "DEL-S1-03",
-      "name": "Informe de Auditoría Crítica (IA/Código)",
-      "path": "docs/auditoria/auditoria-sprint1.md",
-      "type": "CRITICAL_SUPERVISION_REPORT"
+      "id": "PP3-2026-S3",
+      "nombre": "Seguridad, Despliegue y Evidencia Medible",
+      "estado": "PLANIFICADO",
+      "inicio": "2026-10-19",
+      "fin": "2026-11-13",
+      "config_detalle": "sprints/sprint-3/sprint-config.json",
+      "checklist": "sprints/sprint-3/CHECKLIST.md",
+      "rubrica": "se publica el dia de apertura del sprint",
+      "insumos_ADI": [
+        {"tp": "TP4 Contratos API-First", "aporte": "OpenAPI lint-clean + threat model lite", "abierto": "2026-10-13", "entrega": "2026-10-27"},
+        {"tp": "TP5 Mobile Medible", "aporte": "ADR-006 + presupuestos RNF medibles", "abierto": "2026-10-27", "entrega": "2026-11-10"}
+      ],
+      "deliverables": [
+        {"id": "DEL-S3-01", "name": "API implementada segun contratos OpenAPI (linter sin errores)", "path": "docs/arquitectura/api-contracts.yaml", "type": "API_CONTRACT_IMPLEMENTED"},
+        {"id": "DEL-S3-02", "name": "Threat model con mitigaciones aplicadas", "path": "docs/seguridad/", "type": "SECURITY_MITIGATIONS_APPLIED"},
+        {"id": "DEL-S3-03", "name": "Presupuestos de rendimiento medidos con evidencia", "path": "docs/arquitectura/presupuestos-rendimiento.md", "type": "NFR_VERIFICATION"},
+        {"id": "DEL-S3-04", "name": "Despliegue funcional accesible (URL publica o artefacto reproducible)", "path": "docs/deploy/deploy.md", "type": "DEPLOYMENT_FUNCTIONAL"},
+        {"id": "DEL-S3-05", "name": "Informe de Auditoria Critica S3", "path": "docs/auditoria/auditoria-sprint3.md", "type": "CRITICAL_SUPERVISION_REPORT"}
+      ]
     }
-  ]
+  ],
+  "cierre": {
+    "nombre": "Cierre e Informe Final",
+    "estado": "PLANIFICADO",
+    "fecha_entrega": "2026-11-17",
+    "insumos_ADI": [
+      {"tp": "TP6 CI Releases Postmortem", "aporte": "pipeline CI + release v0.1.0 + arnes consolidado + postmortem", "abierto": "2026-11-10", "entrega": "2026-11-17"}
+    ],
+    "deliverables": [
+      {"id": "DEL-CIE-01", "name": "Pipeline CI en verde protegiendo main del repo alumno", "path": ".github/workflows/ci.yml", "type": "CI_PIPELINE"},
+      {"id": "DEL-CIE-02", "name": "Release v0.1.0 etiquetada con CHANGELOG", "path": "CHANGELOG.md", "type": "RELEASE"},
+      {"id": "DEL-CIE-03", "name": "Informe Final PP3 + demo", "path": "docs/informe-final.md", "type": "FINAL_REPORT"}
+    ]
+  },
+  "defensa_integrador_ADI": {
+    "fecha": "2026-11-19",
+    "nota": "Defensa oral del repo completo; usa como evidencia los entregables PP3 acumulados"
+  }
 }

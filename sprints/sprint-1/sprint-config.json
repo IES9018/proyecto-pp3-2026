@@ -1,5 +1,5 @@
 {
-  "sprint_id": "SPRINT-01-2026",
+  "sprint_id": "PP3-2026-S1",
   "course_id": "PP3-2026",
   "start_date": "2026-08-24",
   "end_date": "2026-09-18",
@@ -21,7 +21,7 @@
     },
     {
       "id": "PP3-S1-T3",
-      "description": "Configurar el arnes de control .opencoderules o .cursorrules en la raiz del proyecto",
+      "description": "Configurar el arnes de control .opencoderules (complementado con INSTRUCTIONS.md opcional) en la raiz del proyecto",
       "type": "arnes",
       "priority": "media",
       "dependencies": ["PP3-S1-T1"]

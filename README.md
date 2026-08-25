@@ -51,6 +51,8 @@ feature/<tema>  →  PR a develop (1 revisión)  →  PR develop → main (1 rev
 * Commits convencionales: `feat:` `fix:` `docs:` `ci:` `chore:`.
 * Todo PR usa la plantilla oficial con checklists de calidad, seguridad y trazabilidad.
 
+> **Regla dual:** En tu repo IES9018/<alumno>-<proyecto> hacés el merge vos tras completar los checklists (historial reversible). En este repo de coordinación el esquema es PR + 1 revisión docente (rama protegida).
+
 Plantilla automática: [.github/PULL_REQUEST_TEMPLATE.md](./.github/PULL_REQUEST_TEMPLATE.md)
 Referencia visual: [docs/arquitectura/DIAGRAMAS_REFERENCIA.md](./docs/arquitectura/DIAGRAMAS_REFERENCIA.md)
 
@@ -97,6 +99,6 @@ Marco completo: [Programa PP3](./Planificaciones/Programa-Practica-Profesionaliz
 | Pregunta | Respuesta corta |
 |---|---|
 | ¿Hago fork? | **NO.** Creás tu repo propio en `IES9018`. |
-| ¿Puedo pushear directo a main/develop de MI repo? | No: PR con al menos 1 aprobación (régimen igual al de esta coordinación). |
+| ¿Puedo pushear directo a main/develop de MI repo? | **En tu repo individual** (IES9018/<alumno>-<proyecto>): trabajá por ramas y abrí PRs; mergeá vos mismo cuando los checklists estén completos. Queda trazado en el historial y es reversible (revert merge si falla). **En este repo de coordinación**: PR con al menos 1 aprobación (rama protegida), como indica el diagrama de Git Flow de abajo. |
 | ¿Dónde está el proyecto que diseñé en PP2? | Lo ejecutás vos; el modelo de referencia está en [proyecto-adi-2026](https://github.com/IES9018/proyecto-adi-2026). |
 | ¿Cómo declaro un Non-Goal? | Sección 3 de tu `SPEC.md`. Ver [SPEC-template ADI](https://github.com/IES9018/proyecto-adi-2026/blob/main/templates/SPEC-template.md). |

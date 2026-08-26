@@ -17,7 +17,7 @@ Tecnicatura Superior en Desarrollo de Software · 3° Año · Prof. Paulo Alvare
 | 2 | Creá tu repo individual `<nombre_alumno>-<nombre_proyecto>` | ej.: `raul-crm` — público, en `IES9018`, **sin forks** |
 | 3 | Subí tu `SPEC.md` inicial (proyecto traído de PP2) | raíz de tu repo |
 | 4 | Configurá tu arnés `.opencoderules` (+ `INSTRUCTIONS.md`) | raíz de tu repo |
-| 5 | Vinculá tu repo al tablero Kanban de la materia | captura/enlace en el tablero |
+| 5 | Vinculá tu repo al tablero Kanban de la materia | captura/enlace en el tablero | *(tablero visual de tareas)*
 | 6 | Al cerrar: completá el informe de auditoría crítica | `docs/auditoria/auditoria-sprint1.md` en TU repo |
 
 > 🗓️ Roadmap de TPs ADI + sprints: [CRONOGRAMA-TPs-2026](https://github.com/IES9018/proyecto-adi-2026/blob/main/Planificaciones/CRONOGRAMA-TPs-2026.md)

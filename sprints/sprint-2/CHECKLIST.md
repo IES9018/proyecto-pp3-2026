@@ -5,7 +5,7 @@
 > ⚙️ Flujo de siempre: rama `feature/<tema>` → PR con plantilla → checklists completos → mergeás vos → el docente audita después.
 
 ## Fase 0 — Apertura (21 sep)
-- [ ] Leé este checklist completo y copiate los objetivos al tablero Kanban
+- [ ] Leé este checklist completo y copiate los objetivos al tablero Kanban → [Tutorial paso a paso](../../docs/TUTORIAL-kanban.md)
 - [ ] Verificá que tu `SPEC.md` v1 y tu arnés `.opencoderules` están mergeados (cierre del Sprint 1)
 
 ## Fase 1 — Arquitectura viva (consume el TP2, entrega mar 29 sep)

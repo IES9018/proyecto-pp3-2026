@@ -117,6 +117,7 @@ Marco completo: [Programa PP3](./Planificaciones/Programa-Practica-Profesionaliz
 | `course-state.json` | Estado de infraestructura e hitos de ambas cátedras |
 | `Planificaciones/` | Programa oficial + Contrato pedagógico firmados |
 | `docs/auditoria/` | Rúbricas deterministas y actas de auditoría |
+| `docs/TUTORIAL-kanban.md` | Tutorial visual del tablero Kanban (GitHub Projects) |
 | `.github/PULL_REQUEST_TEMPLATE.md` | Plantilla que se autocompleta en cada PR |
 | `INSTRUCCIONES_ORGANIZACION.md` / `INSTRUCTIONS.md` | Reglas + arnés local OpenCode |
 | `INDICE_SEGUIMIENTO.md` · `LISTA_ESTUDIANTES.md` · `seguimiento-estudiantes.json` | Seguimiento docente |

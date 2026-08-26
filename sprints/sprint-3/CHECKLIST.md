@@ -5,7 +5,7 @@
 > ⚙️ Flujo de siempre: rama `feature/<tema>` → PR con plantilla → checklists completos → mergeás vos → el docente audita después.
 
 ## Fase 0 — Apertura (19 oct)
-- [ ] Leé este checklist completo y actualizá el tablero Kanban
+- [ ] Leé este checklist completo y actualizá el tablero Kanban → [Tutorial paso a paso](../../docs/TUTORIAL-kanban.md)
 - [ ] Verificá que el núcleo del Sprint 2 está mergeado y los tests siguen verdes
 
 ## Fase 1 — Contratos antes que código (consume el TP4, entrega mar 27 oct)

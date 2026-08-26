@@ -21,5 +21,5 @@
 - [ ] El docente audita después del merge: tus PRs son la evidencia evaluable
 
 ## Fase 4 — Integración y cierre
-- [ ] Proyecto vinculado al tablero Kanban de la materia *(Kanban = tablero visual con columnas Por hacer / En progreso / Hecho: tus tareas son tarjetas que movés según avanzan)*
+- [ ] Proyecto vinculado al tablero Kanban de la materia *(Kanban = tablero visual con columnas Por hacer / En progreso / Hecho: tus tareas son tarjetas que movés según avanzan)* → [Tutorial paso a paso](../../docs/TUTORIAL-kanban.md)
 - [ ] Informe `docs/auditoria/auditoria-sprint1.md` en TU repo (rúbrica: [RUBRICA_AUDITORIA_S1.md](../../docs/auditoria/RUBRICA_AUDITORIA_S1.md))

@@ -34,7 +34,7 @@
     },
     {
       "id": "PP3-S1-T4",
-      "description": "Vincular el proyecto al tablero Kanban de GitHub Projects de la materia",
+      "description": "Vincular el proyecto al tablero Kanban de GitHub Projects de la materia (tutorial: docs/TUTORIAL-kanban.md)",
       "type": "integracion",
       "priority": "media",
       "dependencies": [

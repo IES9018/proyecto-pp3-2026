@@ -132,3 +132,12 @@ Marco completo: [Programa PP3](./Planificaciones/Programa-Practica-Profesionaliz
 | ¿Puedo pushear directo a main/develop de MI repo? | **En tu repo individual** (IES9018/<alumno>-<proyecto>): trabajá por ramas y abrí PRs; mergeá vos mismo cuando los checklists estén completos. Queda trazado en el historial y es reversible (revert merge si falla). **En este repo de coordinación**: PR con al menos 1 aprobación (rama protegida), como indica el diagrama de Git Flow de abajo. |
 | ¿Dónde está el proyecto que diseñé en PP2? | Lo ejecutás vos; el modelo de referencia está en [proyecto-adi-2026](https://github.com/IES9018/proyecto-adi-2026). |
 | ¿Cómo declaro un Non-Goal? | Sección 3 de tu `SPEC.md`. Ver [SPEC-template ADI](https://github.com/IES9018/proyecto-adi-2026/blob/main/templates/SPEC-template.md). |
+
+## Seguimiento del curso
+
+El avance de los 15 alumnos se audita solo, todos los dias, y queda publico aqui:
+
+- Tabla viva: https://github.com/IES9018/seguimiento-alumnos (archivo PROGRESO.md)
+- Repo del tracker (script determinista + snapshots): https://github.com/IES9018/seguimiento-alumnos
+
+El bot corre a las 10:00 Argentina y anota una fila por dia. Los expedientes individuales estan en seguimiento-alumnos/*.json de ese repo.

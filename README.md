@@ -104,6 +104,47 @@ Referencia visual: [docs/arquitectura/DIAGRAMAS_REFERENCIA.md](./docs/arquitectu
 Rúbrica determinista de auditoría: [docs/auditoria/RUBRICA_AUDITORIA_S1.md](./docs/auditoria/RUBRICA_AUDITORIA_S1.md)
 Tu informe: `auditoria-sprint1.md` documentando errores hallados en código asistido por IA y sus correcciones.
 
+### Bonus: Desafío Avanzado — Testing de Consistencia y Trazabilidad (+1 punto)
+
+Los estudiantes que completen el **Apéndice Avanzado** de Testing de Consistencia y Trazabilidad pueden obtener un bonus de hasta **+1 punto** sobre la nota final del cierre integrador.
+
+| Criterio | Bonus |
+|:---------|------:|
+| Matriz de trazabilidad con fuentes vigentes y oráculo identificado | +0,20 |
+| Un flujo crítico con tres escenarios significativos (happy path, validación, control de acceso) | +0,25 |
+| Datos sintéticos aislados, repetibles y protegidos | +0,20 |
+| Comparación ejecutada y resultado documentado (con evidencia de al menos un desvío o constancia de consistencia) | +0,20 |
+| Defensa individual satisfactoria | +0,15 |
+| **Total máximo** | **+1,00** |
+
+**Reglas:**
+- Se aplica únicamente al cierre integrador de PP3.
+- El trabajo base debe estar aprobado.
+- La nota final no puede superar 10.
+- No sustituye entregables obligatorios.
+- No se duplica en ADI.
+- No se exige encontrar un error: una comparación sin inconsistencias también vale.
+- Una suite generada por IA que el estudiante no pueda explicar **no recibe bonus**.
+- Una prueba sin aserciones significativas no cuenta.
+- Una suite inestable (flaky) no cumple determinismo.
+
+**Consigna completa:** [trabajos-practicos/apendice-avanzado-testing-consistencia/](https://github.com/IES9018/proyecto-adi-2026/tree/main/trabajos-practicos/apendice-avanzado-testing-consistencia)
+
+### Reglas de defensa individual
+
+En la defensa oral, el estudiante debe poder demostrar que:
+
+- Explica el flujo elegido y por qué es crítico.
+- Identifica el oráculo de cada test.
+- Explica cada escenario y por qué esos tres.
+- Distingue unitario, integración y E2E.
+- Explica los datos sintéticos y por qué no usa personas reales.
+- Muestra una aserción significativa y explica qué verifica.
+- Explica un hallazgo o resultado de la inspección humana.
+- Distingue automatización de juicio humano.
+- Explica qué haría ante un secreto expuesto.
+- Reconoce qué parte generó la IA y qué validó personalmente.
+
 Marco completo: [Programa PP3](./Planificaciones/Programa-Practica-Profesionalizante-III-2026.md) · [Contrato pedagógico](./Planificaciones/Contrato-Pedagogico-Practica-Profesionalizante-III-2026.md)
 
 ---

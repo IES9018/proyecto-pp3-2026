@@ -9,7 +9,13 @@ Tecnicatura Superior en Desarrollo de Software · 3° Año · Prof. Paulo Alvare
 
 ---
 
-## 🚦 EMPEZÁ ACÁ (Sprint 1 — 24 ago al 18 sep)
+## 🚦 Empezá acá
+
+1. Abrí [`sprint-pp3-config.json`](./sprint-pp3-config.json) → es la **fuente de verdad (SSOT)**: identifica qué sprint está vigente según la fecha de hoy.
+2. Abrí el `CHECKLIST.md` de ese sprint (bajo `sprints/sprint-N/`) → tus objetivos tildables.
+3. Necesitás el roadmap completo → [CRONOGRAMA-TPs-2026](https://github.com/IES9018/proyecto-adi-2026/blob/main/Planificaciones/CRONOGRAMA-TPs-2026.md).
+
+Si arrancás desde cero (setup inicial, típico del Sprint 1), los pasos son:
 
 | Paso | Qué hacer | Evidencia esperada |
 |---|---|---|
@@ -22,51 +28,35 @@ Tecnicatura Superior en Desarrollo de Software · 3° Año · Prof. Paulo Alvare
 
 > 🗓️ Roadmap de TPs ADI + sprints: [CRONOGRAMA-TPs-2026](https://github.com/IES9018/proyecto-adi-2026/blob/main/Planificaciones/CRONOGRAMA-TPs-2026.md)
 
-Checklist detallado: [sprints/sprint-1/CHECKLIST.md](./sprints/sprint-1/CHECKLIST.md)
-
 ---
 
 ## 🎯 ¿Dónde está la tarea de hoy?
 
-Siempre en la carpeta del sprint activo:
+1. Identificá el sprint vigente en [`sprint-pp3-config.json`](./sprint-pp3-config.json) (campo `estado` + fechas).
+2. Abrí su carpeta y tildá el checklist:
 
 ```
 sprints/
-├
-───
- sprint-1/            
- ← 
-SPRINT VIGENTE (24 ago - 18 sep)
-│
-   
-├
-───
- CHECKLIST.md     
- ← 
-tus objetivos tildables
-│
-   
-└
-───
- sprint-config.json
-├
-───
- sprint-2/            
- ← 
-PROXIMO (21 sep - 16 oct): nucleo funcional + calidad local
-├
-───
- sprint-3/            
- ← 
-PLANIFICADO (19 oct - 13 nov): seguridad + despliegue
-└
-───
- cierre               
- ← 
-17 nov: pipeline CI + release v0.1.0 + informe final
-``````
+├── sprint-1/   CHECKLIST.md + sprint-config.json
+├── sprint-2/   CHECKLIST.md + sprint-config.json
+├── sprint-3/   CHECKLIST.md + sprint-config.json
+└── cierre      17 nov: pipeline CI + release v0.1.0 + informe final (ver config: sección cierre)
+```
 
-Entregables formales del Sprint 1 (definición exacta): [sprint-pp3-config.json](./sprint-pp3-config.json)
+Entregables y reglas (definición exacta): [sprint-pp3-config.json](./sprint-pp3-config.json)
+
+---
+
+## 🧭 Fuentes de verdad (SSOT)
+
+| Qué | Fuente única |
+|---|---|
+| Fechas, entregables, reglas de sprint y Git Flow, cierre | [`sprint-pp3-config.json`](./sprint-pp3-config.json) |
+| Detalle operativo de cada sprint | `sprints/sprint-N/sprint-config.json` |
+| Tareas tildables del estudiante | `sprints/sprint-N/CHECKLIST.md` |
+| Marco académico | `Planificaciones/Programa-...md` y `Contrato-Pedagogico-...md` |
+| Navegación y orientación | este `README.md` (no es un segundo config) |
+| Estado de infraestructura (histórico) | `course-state.json` — snapshot del 26-ago-2026; **NO** es SSOT de fechas |
 
 ---
 
@@ -155,7 +145,7 @@ Marco completo: [Programa PP3](./Planificaciones/Programa-Practica-Profesionaliz
 |---|---|
 | `sprints/sprint-*/` | Checklists y configuración de cada sprint |
 | `sprint-pp3-config.json` | SSOT: reglas de Git Flow y entregables por entregable-ID |
-| `course-state.json` | Estado de infraestructura e hitos de ambas cátedras |
+| `course-state.json` | Snapshot histórico de infraestructura e hitos (26-ago-2026). No es SSOT de fechas: usá `sprint-pp3-config.json` |
 | `Planificaciones/` | Programa oficial + Contrato pedagógico firmados |
 | `docs/auditoria/` | Rúbricas deterministas y actas de auditoría |
 | `docs/TUTORIAL-kanban.md` | Tutorial visual del tablero Kanban (GitHub Projects) |

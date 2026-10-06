@@ -11,7 +11,7 @@ Tecnicatura Superior en Desarrollo de Software · 3° Año · Prof. Paulo Alvare
 
 ## 🚦 Empezá acá
 
-1. Abrí [`sprint-pp3-config.json`](./sprint-pp3-config.json) → es la **fuente de verdad (SSOT)**: identifica qué sprint está vigente según la fecha de hoy.
+1. Abrí [`sprint-pp3-config.json`](./sprint-pp3-config.json) → es la **fuente de verdad (SSOT)**: el sprint que te corresponde se determina **por las fechas** de hoy contra las de cada sprint. *(El campo `estado` es un snapshot de cuando se publicó cada sprint — las fechas mandan.)*
 2. Abrí el `CHECKLIST.md` de ese sprint (bajo `sprints/sprint-N/`) → tus objetivos tildables.
 3. Necesitás el roadmap completo → [CRONOGRAMA-TPs-2026](https://github.com/IES9018/proyecto-adi-2026/blob/main/Planificaciones/CRONOGRAMA-TPs-2026.md).
 
@@ -32,7 +32,7 @@ Si arrancás desde cero (setup inicial, típico del Sprint 1), los pasos son:
 
 ## 🎯 ¿Dónde está la tarea de hoy?
 
-1. Identificá el sprint vigente en [`sprint-pp3-config.json`](./sprint-pp3-config.json) (campo `estado` + fechas).
+1. Determiná el sprint que te corresponde **por fechas** contra [`sprint-pp3-config.json`](./sprint-pp3-config.json) (el campo `estado` es un snapshot de publicación; las fechas son la fuente).
 2. Abrí su carpeta y tildá el checklist:
 
 ```

@@ -15,7 +15,7 @@ Creacion formal de la rama `develop` y activacion de Branch Protection sobre `ma
 ## Politica vigente (ambas ramas)
 * Pull Request obligatorio con **1 aprobacion** minima.
 * `dismiss_stale_reviews`: **true** (los cambios nuevos invalidan aprobaciones viejas).
-* `enforce_admins`: **true** (push directo prohibido incluso para administradores/docentes).
+* `enforce_admins`: **false** (verificado por API el 2026-10-06: el bypass admin está disponible para el docente; el push directo sigue bloqueado por la regla de PR).
 * `allow_force_pushes`: **false** / `allow_deletions`: **false**.
 
 ## Flujo de trabajo resultante

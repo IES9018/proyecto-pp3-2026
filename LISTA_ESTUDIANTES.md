@@ -35,4 +35,4 @@
 
 El docente audita semanalmente los repos de la org y actualiza estado + observaciones. Los alumnos **no editan** este archivo: cualquier corrección de datos se pide por Issue en el repo de cátedra.
 
-> Checklist del sprint: [CHECKLIST Sprint 1](../sprints/sprint-1/CHECKLIST.md) · Consigna vigente: [TP1](../trabajos-practicos/tp1-sdd-y-arneses/README.md)
+> Checklist del sprint: [CHECKLIST Sprint 1](sprints/sprint-1/CHECKLIST.md) · Consigna vigente: [TP1 — SDD y arneses (proyecto-adi-2026)](https://github.com/IES9018/proyecto-adi-2026/tree/main/trabajos-practicos/tp1-sdd-y-arneses)

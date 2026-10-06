@@ -1,0 +1,55 @@
+{
+  "sprint_id": "PP3-2026-S3",
+  "course_id": "PP3-2026",
+  "start_date": "2026-10-19",
+  "end_date": "2026-11-13",
+  "repository_ids": ["IES9018/proyecto-pp3-2026"],
+  "tasks": [
+    {
+      "id": "PP3-S3-T1",
+      "description": "Implementar la API segun docs/arquitectura/api-contracts.yaml (consigna TP4) con linter OpenAPI sin errores",
+      "type": "implementacion",
+      "priority": "alta",
+      "dependencies": []
+    },
+    {
+      "id": "PP3-S3-T2",
+      "description": "Aplicar las mitigaciones del threat model lite (consigna TP4) y documentar su ubicacion en el codigo",
+      "type": "seguridad",
+      "priority": "alta",
+      "dependencies": ["PP3-S3-T1"]
+    },
+    {
+      "id": "PP3-S3-T3",
+      "description": "Decidir estrategia mobile con ADR-006 (consigna TP5) y adaptar las pantallas criticas a breakpoint movil",
+      "type": "interfaz",
+      "priority": "media",
+      "dependencies": []
+    },
+    {
+      "id": "PP3-S3-T4",
+      "description": "Medir presupuestos de rendimiento definidos en TP5 con herramienta concreta y registrar evidencia",
+      "type": "calidad",
+      "priority": "media",
+      "dependencies": ["PP3-S3-T3"]
+    },
+    {
+      "id": "PP3-S3-T5",
+      "description": "Desplegar el sistema: URL publica accesible o artefacto reproducible documentado en docs/deploy/deploy.md",
+      "type": "despliegue",
+      "priority": "alta",
+      "dependencies": ["PP3-S3-T2", "PP3-S3-T1"]
+    },
+    {
+      "id": "PP3-S3-T6",
+      "description": "Redactar docs/auditoria/auditoria-sprint3.md con incidentes IA correcciones y estado de seguridad",
+      "type": "auditoria",
+      "priority": "alta",
+      "dependencies": ["PP3-S3-T5", "PP3-S3-T2"]
+    }
+  ],
+  "metadata": {
+    "description": "Sprint 3 PP3 (19 Oct - 13 Nov): contratos implementados, seguridad aplicada, RNF medidos y primer despliegue funcional",
+    "objectives": "Sistema seguro desplegado y medible: cada atributo de calidad comprometido en SPEC verificado con evidencia"
+  }
+}

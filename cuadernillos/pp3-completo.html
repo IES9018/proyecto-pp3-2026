@@ -1,0 +1,2763 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>pp3-coordinacion</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  /* ============================================================
+   COLECCIÓN CUADERNILLOS IES 9-018 · Sistema visual único
+   Print-first · fondos ≤ 12% gris · color con significado fijo
+   Fuente de verdad: cuadernillos-discovery/VISUAL_SYSTEM_PROPOSAL.md
+   ============================================================ */
+
+:root{
+  /* --- Barra lateral: ÚNICO grosor para todos los bloques --- */
+  --bar:3mm;
+  /* --- Paleta semántica (una definición por color) --- */
+  --tinta:#143b66;      /* azul de identidad: títulos, portada, th */
+  --azul:#1f5fa8;       /* concepto */
+  --verde:#1f8a70;      /* en simple / probalo */
+  --rojo:#b3402f;       /* error frecuente */
+  --ambar:#c77d0a;      /* ¿por qué importa? */
+  --ocre:#d9a400;       /* recordá */
+  --naranja:#d35400;    /* en el proyecto */
+  --violeta:#6b4fa0;    /* razonamiento: paso a paso y ¿qué pasaría si? */
+  --gris:#5a6470;       /* neutro */
+  --carbon:#3a424b;     /* código / checkpoint */
+  --texto:#0a0d12;
+  --chip:#e4e8ec;       /* código en línea */
+  --codigo-fondo:#f4f6f8;
+}
+*{box-sizing:border-box}
+
+/* ---------- Cuerpo ---------- */
+body{font:11pt/1.45 Georgia,'Times New Roman',serif;color:var(--texto);
+     margin:0 auto;padding:14mm 16mm 20mm 20mm;max-width:186mm}
+h1{font:700 21pt/1.15 'Segoe UI',Helvetica,sans-serif;color:var(--tinta);margin:0 0 4mm;page-break-after:avoid}
+h2{font:700 15pt/1.25 'Segoe UI',sans-serif;color:var(--tinta);margin:7mm 0 3mm;break-after:avoid}
+h3{font:700 11.5pt/1.3 'Segoe UI',sans-serif;color:#23303d;margin:4mm 0 2mm;break-after:avoid}
+p{margin:0 0 2.4mm;orphans:3;widows:3;text-align:justify}
+ul,ol{margin:0 0 2.6mm 5.5mm}li{margin-bottom:1.2mm}
+strong{color:#101317}
+
+/* ---------- Bloques pedagógicos ----------
+   MISMA barra (--bar), MISMO padding, MISMO radio, MISMA alineación.
+   Se distinguen por color de barra + ETIQUETA ::before (no solo color). */
+.concepto,.simple,.importa,.error,.recorda,.proyecto,.probalo,.si,.paso,.checkpoint{
+  border-left:var(--bar) solid var(--gris);padding:2.6mm 4mm 2.6mm 4mm;margin:3mm 0;
+  border-radius:0 2mm 2mm 0;page-break-inside:avoid}
+.concepto::before,.simple::before,.importa::before,.error::before,.recorda::before,
+.proyecto::before,.probalo::before,.si::before,.paso::before,.checkpoint::before{
+  display:block;font:700 7.5pt 'Segoe UI',sans-serif;letter-spacing:.12em;
+  text-transform:uppercase;margin:0 0 1.4mm}
+.concepto{background:#dce8f5;border-left-color:var(--azul)}
+.concepto::before{content:"Concepto clave";color:var(--azul)}
+.simple{background:#e1f0eb;border-left-color:var(--verde);border:1px dashed #a0c9b4;border-left-style:solid;border-left-width:var(--bar)}
+.simple::before{content:"En simple";color:var(--verde)}
+.importa{background:#f8edd4;border-left-color:var(--ambar)}
+.importa::before{content:"¿Por qué importa?";color:var(--ambar)}
+.error{background:#f8ded9;border-left-color:var(--rojo)}
+.error::before{content:"Error frecuente";color:var(--rojo)}
+.recorda{background:#faf2d4;border-left-color:var(--ocre)}
+.recorda::before{content:"Recordá";color:#8a6a00}
+.proyecto{background:#fae6d4;border-left-color:var(--naranja)}
+.proyecto::before{content:"En el proyecto";color:var(--naranja)}
+.probalo{background:#e1f0eb;border-left-color:var(--verde)}
+.probalo::before{content:"Probalo";color:var(--verde)}
+.si{background:#eee4f5;border-left-color:var(--violeta)}
+.si::before{content:"¿Qué pasaría si…?";color:var(--violeta)}
+.paso{background:#ebe1f2;border-left-color:var(--violeta)}
+.paso::before{content:"Paso a paso";color:var(--violeta)}
+.checkpoint{background:#e7eaee;border-left-color:var(--carbon);box-shadow:0 1mm 3mm rgba(0,0,0,.14)}
+.checkpoint::before{content:"Checkpoint — respondé sin mirar";color:var(--carbon)}
+
+/* ---------- Código: fondo claro, UNA barra, UN padding ----------
+   Reglas separadas para wrapper y pre interno (causa del bug corregida). */
+.sourceCode{background:var(--codigo-fondo);border:none;border-left:var(--bar) solid var(--carbon);
+  border-radius:0 2mm 2mm 0;padding:2.8mm 4mm;margin:3mm 0;page-break-inside:avoid;overflow-x:auto}
+.sourceCode pre{margin:0;padding:0;background:transparent;border:none;border-left:none;
+  border-radius:0;overflow:visible;white-space:pre-wrap;overflow-wrap:anywhere}
+/* TERMINAL (code.sourceCode): neutraliza la maquinaria de números de línea de pandoc
+   (span inline-block + text-indent de print para pre.numberSource) que fragmenta,
+   desplaza y recorta las líneas. Solo afecta a esta categoría. */
+.sourceCode code.sourceCode{white-space:pre-wrap;position:relative}
+.sourceCode code.sourceCode > span{display:block;line-height:inherit;text-indent:0;padding-left:0;position:relative;z-index:1}
+.sourceCode code.sourceCode > span > a:first-child{display:none}
+.sourceCode code.sourceCode > span > a:first-child::before{content:none;text-decoration:none}
+pre{background:var(--codigo-fondo);border:none;border-left:var(--bar) solid var(--carbon);
+  border-radius:0 2mm 2mm 0;padding:2.8mm 4mm;margin:3mm 0;page-break-inside:avoid;
+  font:9pt/1.5 Consolas,'Cascadia Mono',monospace;color:#1a1d21;white-space:pre-wrap;overflow-wrap:anywhere}
+code{background:var(--chip);color:#14171c;padding:0 1.5mm;border-radius:1.5mm;
+  font:8.8pt/1.35 Consolas,'Cascadia Mono',monospace;overflow-wrap:anywhere}
+/* REGLA DE RELACIÓN: dentro de un bloque preformateado, el <code> es transparente.
+   Una sola superficie — el estilo chip es SOLO para código en línea. */
+pre code{background:transparent;color:inherit;padding:0;border:0;border-radius:0;
+  box-shadow:none;font:inherit;line-height:inherit;overflow-wrap:inherit;display:inline}
+
+/* ---------- Tablas: cabecera clara + filete ---------- */
+table{width:100%;border-collapse:collapse;margin:3mm 0;font-size:9.8pt;page-break-inside:avoid}
+th{background:#e8eef5;color:var(--tinta);font:700 8.5pt 'Segoe UI',sans-serif;padding:2mm 2.5mm;
+   border-top:1.5mm solid var(--tinta);border-bottom:.8pt solid #b9c6d4;text-align:left}
+td{padding:2mm 2.5mm;border-bottom:.6pt solid #ccd3da;overflow-wrap:break-word}
+tr:nth-child(even) td{background:#f6f8fa}
+td code{font-size:8.3pt}
+
+/* ---------- Figuras / diagramas SVG ---------- */
+img{max-width:100%;height:auto;border:.6pt solid #d4dae0;border-radius:2mm;
+    background:#fbfcfd;padding:2mm;page-break-inside:avoid}
+p>em:only-child{display:block;text-align:center;color:var(--gris);font-size:9pt;margin:1mm 0 3mm}
+
+/* ---------- Citas ---------- */
+blockquote{background:#eaf1f9;border-left:var(--bar) solid var(--azul);padding:2.5mm 4mm;margin:3mm 0;
+  border-radius:0 2mm 2mm 0}
+
+/* ---------- Links ---------- */
+a{color:var(--tinta);text-decoration:underline;text-decoration-color:#9db3cc;text-underline-offset:1.5pt}
+
+/* ---------- Índice ---------- */
+nav#TOC{border:.6pt solid #ccd3da;border-radius:2mm;padding:5mm 7mm;margin:6mm 0 0;
+  background:#fbfcfd;page-break-after:always}
+nav#TOC h2{margin:0 0 3mm;font-size:13pt}
+nav#TOC ul{list-style:none;margin:0;padding:0}
+nav#TOC li{margin:0 0 1.8mm;font:10.5pt/1.4 'Segoe UI',sans-serif}
+nav#TOC>ul>li{font-weight:700}
+nav#TOC a{color:var(--tinta);text-decoration:none}
+
+/* ---------- Portada (colección) ---------- */
+.portada{background:var(--tinta);color:#fff;width:210mm;min-height:292mm;
+  padding:22mm 20mm;margin:6mm auto 0;border-radius:3mm;box-shadow:0 2px 10px rgba(0,0,0,.35);
+  display:flex;flex-direction:column;justify-content:space-between}
+.portada .kicker{font:700 9pt 'Segoe UI',sans-serif;letter-spacing:.28em;text-transform:uppercase;color:#8fb6e0}
+.portada .num{font:700 76pt/1 'Segoe UI',sans-serif;margin:6mm 0 3mm}
+.portada h1{color:#fff;font-size:27pt;line-height:1.12;margin:0 0 5mm;page-break-after:auto}
+.portada .sub{font:400 12.5pt/1.45 'Segoe UI',sans-serif;color:#c9dcf1;max-width:150mm}
+.portada .meta{font:10pt/1.75 'Segoe UI',sans-serif;color:#c9dcf1}
+.portada .meta b{color:#fff}
+.portada .repo{font:9.5pt Consolas,monospace;color:#fff}
+.portada .barra{height:5mm;border-radius:1mm;margin-top:6mm;
+  background:linear-gradient(90deg,var(--naranja) 0 22%,var(--verde) 22% 44%,#4c8fd6 44% 66%,var(--ocre) 66% 84%,var(--rojo) 84% 100%)}
+
+/* ---------- Cierre de unidad ---------- */
+.cierre{page-break-inside:avoid}
+.cierre>p:last-child{color:var(--gris);font:italic 9.5pt 'Segoe UI',sans-serif;
+  border-top:.6pt solid #dde2e7;padding-top:2mm;margin:4mm 0 0}
+
+/* ---------- Saltos de página entre unidades ---------- */
+section.level1{page-break-before:always}
+section.level1:first-of-type{page-break-before:auto}
+
+/* ---------- Impresión A4 ---------- */
+@media print{
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;color-adjust:exact!important}
+  @page{size:A4;margin:18mm 16mm 18mm 20mm}   /* canal de encuadernación a la izquierda */
+  @page :first{margin:0}                       /* portada a sangre */
+  body{padding:0;max-width:none}
+  .portada{width:210mm;height:296.5mm;min-height:0;margin:0;border-radius:0;box-shadow:none;page-break-after:always}
+  nav#TOC{margin:0 0 6mm;border-radius:0;border:none;border-bottom:.6pt solid #ccd3da}
+}
+
+</style>
+</head>
+<body>
+<div class="portada">
+  <div>
+    <div class="kicker">Cuadernillos de Desarrollo de Software</div>
+    <div class="num">03</div>
+    <h1>PP3 — Coordinación del<br>Proyecto Integrador</h1>
+    <div class="sub">El proceso completo de la materia en un solo mapa: sprints, Git Flow, SPEC y ADR, evidencia y defensa.</div>
+    <div class="barra"></div>
+  </div>
+  <div class="meta">
+    <b>Práctica Profesionalizante III</b> · 3° año · Ciclo 2026<br>
+    Tecnicatura Superior en Desarrollo de Software · IES 9-018 · Prof. Paulo Alvarez<br><br>
+    Fuente primaria: <span class="repo">github.com/IES9018/proyecto-pp3-2026</span><br>
+    Se lee junto con: <span class="repo">ADI-teoria-y-recursos</span> · <span class="repo">proyecto-adi-2026</span>
+  </div>
+</div>
+<nav id="TOC" role="doc-toc">
+<h2 id="toc-title">Índice</h2>
+<ul>
+<li><a href="#cómo-usar-este-cuadernillo"
+id="toc-cómo-usar-este-cuadernillo">Cómo usar este cuadernillo</a></li>
+<li><a href="#tu-lugar-en-la-organización"
+id="toc-tu-lugar-en-la-organización">Tu lugar en la
+organización</a></li>
+<li><a href="#planificar-backlog-kanban-y-objetivos-de-sprint"
+id="toc-planificar-backlog-kanban-y-objetivos-de-sprint">Planificar:
+backlog, Kanban y objetivos de sprint</a></li>
+<li><a href="#git-flow-y-la-regla-dual"
+id="toc-git-flow-y-la-regla-dual">Git Flow y la regla dual</a></li>
+<li><a href="#sdd-en-marcha-spec-adr-y-arnés"
+id="toc-sdd-en-marcha-spec-adr-y-arnés">SDD en marcha: SPEC, ADR y
+arnés</a></li>
+<li><a href="#arquitectura-viva-c4-en-tu-repo"
+id="toc-arquitectura-viva-c4-en-tu-repo">Arquitectura viva: C4 en tu
+repo</a></li>
+<li><a href="#núcleo-funcional-e-interfaz-crítica"
+id="toc-núcleo-funcional-e-interfaz-crítica">Núcleo funcional e interfaz
+crítica</a></li>
+<li><a href="#calidad-local-tests-que-cuentan"
+id="toc-calidad-local-tests-que-cuentan">Calidad local: tests que
+cuentan</a></li>
+<li><a href="#contratos-y-seguridad"
+id="toc-contratos-y-seguridad">Contratos y seguridad</a></li>
+<li><a href="#mobile-medible-y-despliegue-funcional"
+id="toc-mobile-medible-y-despliegue-funcional">Mobile medible y
+despliegue funcional</a></li>
+<li><a href="#documentación-legal-y-licencias"
+id="toc-documentación-legal-y-licencias">Documentación legal y
+licencias</a></li>
+<li><a href="#auditoría-evaluación-bonus-y-defensa"
+id="toc-auditoría-evaluación-bonus-y-defensa">Auditoría, evaluación,
+bonus y defensa</a></li>
+</ul>
+</nav>
+<section id="cómo-usar-este-cuadernillo" class="level1">
+<h1>Cómo usar este cuadernillo</h1>
+<blockquote>
+<p><strong>Propósito:</strong> que sepas en todo momento qué tenés que
+hacer, con qué reglas y con qué evidencia. Este cuadernillo no reemplaza
+el repositorio de coordinación: lo explica, lo relaciona y anticipa lo
+que viene.</p>
+</blockquote>
+<p>Empezá por entender dónde vive cada cosa, porque en esta materia hay
+<strong>tres</strong> repositorios + <strong>tu</strong> repositorio
+individual.</p>
+<section id="el-mapa-de-los-cuatro-repositorios" class="level2">
+<h2>El mapa de los cuatro repositorios</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Repositorio</th>
+<th>Qué contiene</th>
+<th>Lo uso para</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>github.com/IES9018/ADI-teoria-y-recursos</code></td>
+<td>Teoría de Arquitectura y Diseño de Interfaces</td>
+<td>Entender los conceptos antes de practicar</td>
+</tr>
+<tr>
+<td><code>github.com/IES9018/proyecto-adi-2026</code></td>
+<td>Consignas de TP, plantillas, proyecto modelo
+A-gobernanza-digital</td>
+<td>Copiar plantillas, leer ejemplos reales</td>
+</tr>
+<tr>
+<td><strong><code>github.com/IES9018/proyecto-pp3-2026</code></strong></td>
+<td>Reglas de los 3 sprints, checklists, rúbricas, configuraciones</td>
+<td><strong>Este cuadernillo lo explica</strong>, pero el SSOT es el
+repo</td>
+</tr>
+<tr>
+<td><code>github.com/IES9018/&lt;tunombre&gt;-&lt;tuproyecto&gt;</code></td>
+<td><strong>Tu</strong> proyecto individual</td>
+<td>Trabajar, hacer PR, recibir feedback</td>
+</tr>
+</tbody>
+</table>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Repositorio</th>
+<th>Contiene</th>
+<th>Se conecta con</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Teoría</strong> (lectura)</td>
+<td>U1-U10</td>
+<td>→ TP1-6</td>
+</tr>
+<tr>
+<td><strong>Consignas</strong> (plantillas)</td>
+<td>TP1-6, modelo, templates</td>
+<td>→ Sprint 1-3</td>
+</tr>
+<tr>
+<td><strong>PP3</strong> (reglas)</td>
+<td>checklists, rúbricas, config</td>
+<td>→ Cierre + defensa</td>
+</tr>
+<tr>
+<td><strong>TU REPOSITORIO</strong> (tu código)</td>
+<td>tu proyecto individual</td>
+<td>(todo confluye acá)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Regla:</strong> Nunca trabajás directo sobre los repos de la
+cátedra. Solo sobre el tuyo. Los forks están prohibidos.</p>
+<div class="importa">
+<p>¿Por qué importa saber esto? Porque si tenés una duda de “¿cómo era
+la regla de Git Flow?” no buscás en tu código: buscás en
+<code>proyecto-pp3-2026</code>. Y si te falta una especificación, no la
+inventás: la copiás de <code>proyecto-adi-2026/templates/</code>.</p>
+</div>
+</section>
+<section id="la-cadena-tp-sprint-cierre" class="level2">
+<h2>La cadena TP → sprint → cierre</h2>
+<p>El cronograma real (fuente: <code>CRONOGRAMA-TPs-2026.md</code> del
+repo ADI proyecto) sincroniza los trabajos prácticos de ADI con los
+sprints de PP3:</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>TP</th>
+<th>Insumo para</th>
+<th>Sprint</th>
+<th>Período</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TP1</td>
+<td>SPEC + ADR-001</td>
+<td>Sprint 1</td>
+<td>24 ago – 18 sep</td>
+</tr>
+<tr>
+<td>TP2 / TP3</td>
+<td>SPEC v2 + C4 + ADRs + personas y wireframes</td>
+<td>Sprint 2</td>
+<td>21 sep – 16 oct</td>
+</tr>
+<tr>
+<td>TP4 / TP5</td>
+<td>OpenAPI + threat model + mobile + presupuestos</td>
+<td>Sprint 3 (TP4 se abre 13 oct, entrega 27 oct)</td>
+<td>19 oct – 13 nov</td>
+</tr>
+<tr>
+<td>TP6</td>
+<td>Pipeline CI + release v0.1.0 + postmortem</td>
+<td>Cierre (técnico)</td>
+<td>entrega 17 nov</td>
+</tr>
+<tr>
+<td>—</td>
+<td>Defensa integradora (oral)</td>
+<td>—</td>
+<td>19 nov</td>
+</tr>
+</tbody>
+</table>
+<p>Cada unidad de este cuadernillo te dice <strong>en qué sprint y con
+qué entregable se relaciona</strong>.</p>
+</section>
+<section id="los-bloques-que-vas-a-encontrar" class="level2">
+<h2>Los bloques que vas a encontrar</h2>
+<p>Toda la colección usa los mismos bloques con el mismo color. El color
+siempre significa lo mismo.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Bloque</th>
+<th>Color</th>
+<th>Significa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CONCEPTO CLAVE</strong></td>
+<td>Azul</td>
+<td>La definición en una frase. Lo más importante.</td>
+</tr>
+<tr>
+<td><strong>EN SIMPLE</strong></td>
+<td>Verde agua</td>
+<td>La idea con palabras de todos: analogía o intuición.</td>
+</tr>
+<tr>
+<td><strong>TÉRMINO TÉCNICO</strong></td>
+<td>Gris</td>
+<td>El nombre profesional en inglés + explicación en español.</td>
+</tr>
+<tr>
+<td><strong>¿POR QUÉ IMPORTA?</strong></td>
+<td>Ámbar</td>
+<td>Qué ganás o qué se rompe si esto no lo sabés.</td>
+</tr>
+<tr>
+<td><strong>EJEMPLO REAL</strong></td>
+<td>Azul acero</td>
+<td>Un archivo concreto del repositorio de la materia.</td>
+</tr>
+<tr>
+<td><strong>EJEMPLO DE CÓDIGO</strong></td>
+<td>Carbón</td>
+<td>Código de ≤ 20 líneas con una sola idea.</td>
+</tr>
+<tr>
+<td><strong>PASO A PASO</strong></td>
+<td>Violeta</td>
+<td>Secuencia numerada 1→n de un procedimiento.</td>
+</tr>
+<tr>
+<td><strong>ERROR FRECUENTE</strong></td>
+<td>Rojo apagado</td>
+<td>El error real + cómo se evita.</td>
+</tr>
+<tr>
+<td><strong>NO CONFUNDIR</strong></td>
+<td>Rojo/Gris</td>
+<td>Dos conceptos que se parecen y no son lo mismo.</td>
+</tr>
+<tr>
+<td><strong>RECORDÁ</strong></td>
+<td>Amarillo ocre</td>
+<td>Regla mnemotécnica o límite que hay que retener.</td>
+</tr>
+<tr>
+<td><strong>EN EL PROYECTO</strong></td>
+<td>Naranja</td>
+<td>Dónde aparece esto en tu TP y en tu sprint, con ruta exacta.</td>
+</tr>
+<tr>
+<td><strong>PROBALO</strong></td>
+<td>Verde</td>
+<td>Tarea concreta, verificable, con entregable mínimo.</td>
+</tr>
+<tr>
+<td><strong>¿QUÉ PASARÍA SI…?</strong></td>
+<td>Púrpura</td>
+<td>Consecuencia hipotética que obliga a razonar.</td>
+</tr>
+<tr>
+<td><strong>CHECKPOINT</strong></td>
+<td>Fondo gris</td>
+<td>2-4 preguntas al cerrar la unidad. Obligatorio.</td>
+</tr>
+</tbody>
+</table>
+<div class="recorda">
+<p><strong>Un color sin significado no existe en esta
+colección.</strong> Si ves un recuadro de color y no entendés qué
+significa, es un error del cuadernillo: reportalo.</p>
+</div>
+</section>
+<section id="antes-de-arrancar" class="level2">
+<h2>Antes de arrancar</h2>
+<p>Este cuadernillo es el <strong>número 03</strong> de la colección.
+Presupone que leíste o tenés a mano los otros dos: - <strong>01</strong>
+— Arquitectura y Diseño de Interfaces — Teoría (los conceptos) -
+<strong>02</strong> — Arquitectura y Diseño de Interfaces — Proyecto
+(las consignas y el modelo)</p>
+<p>Pero si no los tenés, no importa: cada unidad es autocontenida y cita
+la fuente exacta donde profundizar.</p>
+<div class="probalo">
+<p>Probalo: Abrí <code>github.com/IES9018/proyecto-pp3-2026</code> en el
+navegador. Encontrá las carpetas <code>sprints/sprint-1/</code>,
+<code>sprints/sprint-2/</code> y <code>sprints/sprint-3/</code>. Anotá
+qué archivos tiene cada una. Eso es todo el perímetro de lo que
+necesitás de este repo.</p>
+</div>
+<div class="cierre"><div class="checkpoint">
+<ol type="1">
+<li>¿Qué cuatro repositorios usás en PP3 y para qué sirve cada uno?</li>
+<li>¿Qué insumo produce el TP1 y en qué sprint se consume?</li>
+<li>¿Qué significa que un color “no tiene significado” en esta
+colección?</li>
+</ol>
+</div><p><strong>Siguiente unidad:</strong> U1 → Tu
+lugar en la organización</p></div>
+</section>
+</section>
+<section id="tu-lugar-en-la-organización" class="level1">
+<h1>Tu lugar en la organización</h1>
+<p>Esta materia tiene un esquema de repositorios distinto al que venís
+usando: vos no trabajás sobre un repo compartido ni hacés fork de uno
+existente. <strong>Creás tu propio repositorio dentro de la organización
+de la cátedra.</strong></p>
+<section id="regla-de-oro-sin-forks-repo-propio" class="level2">
+<h2>Regla de oro: sin forks, repo propio</h2>
+<p>Cuando arranca el Sprint 1, no apretás “Fork”. Creás un repositorio
+<strong>nuevo, público, vacío</strong> dentro de
+<code>github.com/IES9018/</code> con el nombre:</p>
+<pre><code>IES9018/&lt;tu_nombre&gt;-&lt;nombre_de_tu_proyecto&gt;</code></pre>
+<p>Ejemplo: <code>IES9018/raul-crm</code>,
+<code>IES9018/maria-sistema-licencias</code>.</p>
+<div class="simple">
+<p>no es “me copio el repo de la cátedra y lo modifico”. Es “creo el mío
+desde cero y uso los de la cátedra como referencia”. Si hicieras fork,
+tus PR intentarían ir al repo original (el del docente), y eso rompe
+todo el esquema de auditoría.</p>
+</div>
+<div class="concepto">
+<p><strong>Organización IES9018:</strong> el espacio de GitHub donde
+están todos los repositorios de la carrera. Tu repo individual debe
+estar acá, no en tu cuenta personal. Si lo creás en tu cuenta, el bot de
+seguimiento no puede auditorlo.</p>
+</div>
+</section>
+<section id="cómo-se-crea-tu-repositorio" class="level2">
+<h2>Cómo se crea tu repositorio</h2>
+<ol type="1">
+<li>Entrás a <code>github.com/IES9018</code> (estás invitado como
+miembro de la organización).</li>
+<li>New repository → nombre:
+<code>&lt;tunombre&gt;-&lt;tuproyecto&gt;</code> → público → <strong>sin
+inicializar</strong> (sin README, sin .gitignore, sin licencia).</li>
+<li>En tu terminal local:</li>
+</ol>
+<div class="terminal-plain">
+<pre><code>git init
+git add .
+git commit -m &quot;chore: initial commit&quot;
+git remote add origin git@github.com:IES9018/&lt;tunombre&gt;-&lt;tuproyecto&gt;.git
+git push -u origin main</code></pre>
+</div>
+<ol start="4" type="1">
+<li>Subí los archivos obligatorios del Sprint 1 copiados desde las
+plantillas.</li>
+</ol>
+<div class="error">
+<p>crear el repo como privado. No puede: el bot de seguimiento y el
+docente necesitan acceso de lectura pública. Si lo necesitás privado por
+política de datos (proyecto con información sensible), hablalo con el
+docente <strong>antes</strong> de crear el repo.</p>
+</div>
+</section>
+<section id="el-seguimiento-sos-auditor-todos-los-días" class="level2">
+<h2>El seguimiento: sos auditor todos los días</h2>
+<p>La cátedra tiene un <strong>script determinista</strong> (sin IA) que
+corre todos los días a las 10:00 Argentina. Revisa tu repositorio y
+anota automáticamente:</p>
+<ul>
+<li>¿Tenés SPEC.md en la raíz? Sí/No.</li>
+<li>¿Tenés <code>docs/adr/</code> con al menos un ADR? Sí/No.</li>
+<li>¿Tenés <code>.opencoderules</code>? Sí/No.</li>
+<li>¿Hay PRs abiertos? ¿Están mergeados?</li>
+<li>¿Los commits siguen el formato convencional?</li>
+</ul>
+<div class="importa">
+<p>Porque si algo falta, recibís un <strong>Issue automático</strong> en
+tu repo con los pasos a seguir. No es un castigo: es el mecanismo para
+que no te atrases. Si ignorás los issues, el docente lo ve reflejado en
+el seguimiento.</p>
+</div>
+<p>El registro de seguimiento es interno del docente. Vos no ves el
+tablero general, pero ves tu propio historial en los Issues de tu
+repositorio.</p>
+<div class="recorda">
+<p><strong>El bot no interpreta, no opina, no perdona:</strong> si el
+archivo no está, no está. No importa si “está por subirse”. Subilo con
+un commit y pushealo; si el bot corre antes, te llega el Issue
+igual.</p>
+</div>
+</section>
+<section id="roles-de-auditoría" class="level2">
+<h2>Roles de auditoría</h2>
+<p>El docente audita con dos sombreros:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Rol</th>
+<th>Qué mira</th>
+<th>Evidencia primaria</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Capataz</strong></td>
+<td>Verificación de cumplimiento: SPEC completa, checklist marcados,
+Non-Goals explícitos</td>
+<td>PRs mergeados, informes de auditoría</td>
+</tr>
+<tr>
+<td><strong>Arquitecto de Obra</strong></td>
+<td>Decisión técnica: ADR justificado, diagramas C4 trazables, contratos
+coherentes</td>
+<td><code>SPEC.md</code>, <code>docs/adr/</code>,
+<code>docs/arquitectura/</code></td>
+</tr>
+</tbody>
+</table>
+<p>Tu trabajo no es “adivinar qué quiere el docente”: la rúbrica es
+determinista y pública
+(<code>docs/auditoria/RUBRICA_AUDITORIA_S1.md</code> en el repo PP3). Si
+cumplís los puntos, aprobás.</p>
+</section>
+<section id="anatomía-de-tu-repositorio" class="level2">
+<h2>Anatomía de tu repositorio</h2>
+<p>Al final del Sprint 1, tu repo debería verse así:</p>
+<pre><code>SPEC.md                      ← especificación del proyecto
+.opencoderules               ← reglas del agente de IA (arnés)
+INSTRUCTIONS.md (opcional)   ← complemento del arnés
+docs/
+  adr/
+    ADR-001-stack-tecnologico.md
+  arquitectura/              ← a partir del Sprint 2
+  pruebas/                   ← a partir del Sprint 2
+  auditoria/
+    auditoria-sprint1.md
+    auditoria-sprint2.md
+    auditoria-sprint3.md
+  seguridad/                 ← a partir del Sprint 3
+  deploy/                    ← a partir del Sprint 3</code></pre>
+<div class="proyecto">
+<p>En tu sprint (Sprint 1, Fase 0-1): creá la estructura de carpetas
+vacía (<code>docs/adr/</code>, <code>docs/auditoria/</code>) aunque
+todavía no tengan archivos. El bot busca la carpeta, no solo el
+archivo.</p>
+</div>
+</section>
+<section id="cómo-fluye-el-feedback" class="level2">
+<h2>Cómo fluye el feedback</h2>
+<pre><code>1. Hacés commit + PR en tu repo (con plantilla)
+2. El bot corre a las 10:00 y registra el estado
+3. Si falta algo → Issue automático en tu repo
+4. Corregís → nuevo commit → nuevo PR
+5. El docente revisa PRs en lote y deja comentarios
+6. Cuando está todo → mergeás vos mismo</code></pre>
+<div class="si">
+<p>Ignoraras un Issue del bot durante una semana? Acumulás deuda técnica
+de gestión: el docente ve que no corregiste, el Sprint 2 arranca con la
+SPEC desactualizada y el arrastre se nota en la defensa. Cada sprint se
+cierra con su informe de auditoría.</p>
+</div>
+<div class="cierre"><div class="checkpoint">
+<ol type="1">
+<li>¿Por qué se crea un repo propio y no un fork? ¿Dónde debe vivir ese
+repo?</li>
+<li>¿Qué revisa el bot de seguimiento a las 10:00 y qué recibís si falta
+un archivo?</li>
+<li>¿Qué evidencia primaria mira el docente como Capataz y cuál como
+Arquitecto de Obra?</li>
+</ol>
+</div><p><strong>Siguiente unidad:</strong> U2 →
+Planificar: backlog, Kanban y objetivos de sprint</p></div>
+</section>
+</section>
+<section id="planificar-backlog-kanban-y-objetivos-de-sprint"
+class="level1">
+<h1>Planificar: backlog, Kanban y objetivos de sprint</h1>
+<p>En PP3 no trabajás con “lo que tocó hoy” ni con “lo que falta para
+terminar el TP”. Trabajás con <strong>sprints</strong> que tienen un
+<strong>objetivo verificable</strong> y un <strong>backlog</strong>
+priorizado.</p>
+<section id="scrum-y-kanban-lo-mínimo-que-necesitás" class="level2">
+<h2>Scrum y Kanban: lo mínimo que necesitás</h2>
+<p>La cátedra usa una mezcla práctica: el <strong>backlog</strong> y los
+<strong>objetivos de sprint</strong> vienen de Scrum; la
+<strong>visualización del avance</strong> y los <strong>límites de
+trabajo en progreso</strong> (WIP) vienen de Kanban.</p>
+<div class="concepto">
+<p><strong>Backlog:</strong> lista priorizada de todo lo que el proyecto
+necesita. No es una wishlist: cada ítem tiene un criterio de aceptación
+verificable. El backlog vive en el <strong>tablero Kanban</strong> de
+GitHub Projects.</p>
+</div>
+<div class="concepto">
+<p><strong>Objetivo de sprint:</strong> una frase que describe qué va a
+estar funcionando al final del sprint. No es “hacer cosas”. Es “el
+usuario puede registrarse y ver su perfil”. Medible, demostrable.</p>
+</div>
+<div class="concepto">
+<p><strong>Tablero Kanban:</strong> el panel visual con columnas <em>Por
+hacer / En progreso / Hecho</em>. Cada tarea es una tarjeta que se mueve
+de izquierda a derecha. El tablero oficial de la materia está en GitHub
+Projects y tiene un tutorial paso a paso en
+<code>proyecto-pp3-2026/docs/TUTORIAL-kanban.md</code>.</p>
+</div>
+</section>
+<section id="cómo-se-construye-el-objetivo-de-sprint" class="level2">
+<h2>Cómo se construye el objetivo de sprint</h2>
+<p>No es “terminar el TP2”. El TP2 es un insumo. El objetivo se escribe
+así:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Elemento</th>
+<th>Pregunta que responde</th>
+<th>Ejemplo real (Sprint 2)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Verbo</strong></td>
+<td>¿Qué se logra?</td>
+<td>“Implementar y documentar”</td>
+</tr>
+<tr>
+<td><strong>Feature</strong></td>
+<td>¿Qué parte del sistema?</td>
+<td>“el núcleo funcional con SPEC v2 actualizada”</td>
+</tr>
+<tr>
+<td><strong>Evidencia</strong></td>
+<td>¿Cómo se comprueba?</td>
+<td>“≥ 10 tests verdes corriendo localmente”</td>
+</tr>
+<tr>
+<td><strong>Criterio de cierre</strong></td>
+<td>¿Quién dice que está?</td>
+<td>“PR final mergeado con todos los checklists completos”</td>
+</tr>
+</tbody>
+</table>
+<p>El objetivo del Sprint 2 se lee así: <em>“Implementar y documentar el
+núcleo funcional con SPEC v2 actualizada, ≥ 10 tests verdes locales,
+wireframes de 2 pantallas críticas, y PR final mergeado con todos los
+checklists completos.”</em></p>
+<div class="simple">
+<p>no es “entregar algo”, es “que algo funcione y se pueda verificar”.
+Si tenés 200 líneas de código pero 0 tests, no cumpliste el objetivo. Si
+tenés 0 líneas nuevas pero la SPEC v2 está completa y los tests están
+verdes, avanzaste.</p>
+</div>
+</section>
+<section id="el-tablero-kanban-paso-a-paso" class="level2">
+<h2>El tablero Kanban paso a paso</h2>
+<p>El repo PP3 tiene un tutorial dedicado
+(<code>docs/TUTORIAL-kanban.md</code>) con captura de pantalla. En
+resumen:</p>
+<ol type="1">
+<li>Entrá a GitHub → Projects → “PP3 2026 — Seguimiento”.</li>
+<li>Creá una tarjeta por cada entregable del sprint (los
+<code>DEL-Sx-xx</code>).</li>
+<li>Mové la tarjeta a <em>En progreso</em> cuando arrancás.</li>
+<li>Cuando el PR está mergeado → mové a <em>Hecho</em>.</li>
+<li>Al cerrar el sprint, todas las tarjetas deberían estar en
+<em>Hecho</em>.</li>
+</ol>
+<pre><code>┌──────────────┐    ┌──────────────┐    ┌──────────────┐
+│ POR HACER    │───→│ EN PROGRESO  │───→│ HECHO        │
+│ (backlog)    │    │ (estoy acá)  │    │ (mergeado)   │
+└──────────────┘    └──────────────┘    └──────────────┘</code></pre>
+<div class="error">
+<p>poner todo el TP como una sola tarjeta “Sprint 2”. Un sprint no es
+una tarea: es un conjunto de tareas que entregan un objetivo. Si tenés
+una sola tarjeta, no podés visualizar qué está bloqueado y qué
+avanzó.</p>
+</div>
+</section>
+<section id="registro-de-avance-y-bloqueos" class="level2">
+<h2>Registro de avance y bloqueos</h2>
+<p>Cuando trabajes, actualizá dos cosas:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Cuándo</th>
+<th>Qué registrar</th>
+<th>Dónde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Arrancás una tarea</td>
+<td>Mové la tarjeta a <em>En progreso</em> + comentá quién arranca</td>
+<td>Tablero Kanban</td>
+</tr>
+<tr>
+<td>Te trabás</td>
+<td>Comentá el bloqueo en la tarjeta: “me falta definir X para
+seguir”</td>
+<td>Tablero Kanban</td>
+</tr>
+<tr>
+<td>Terminás</td>
+<td>Mergeá el PR + mové la tarjeta a <em>Hecho</em></td>
+<td>GitHub</td>
+</tr>
+<tr>
+<td>Cierre de sprint</td>
+<td>Completá el informe de auditoría</td>
+<td><code>docs/auditoria/</code> en TU repo</td>
+</tr>
+</tbody>
+</table>
+<div class="importa">
+<p>Porque el docente no te pregunta “¿cómo vas?” todos los días. Revisa
+el tablero y los Issues. Si tu tablero está vacío o tu tarjeta lleva 5
+días en <em>En progreso</em> sin comentarios, se nota.</p>
+</div>
+</section>
+<section id="los-3-sprints-del-año" class="level2">
+<h2>Los 3 sprints del año</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Sprint</th>
+<th>Fechas</th>
+<th>Objetivo resumido</th>
+<th>Entregables clave</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Sprint 1</strong></td>
+<td>24 ago — 18 sep</td>
+<td>Setup + SPEC + ADR-001 + arnés + Git Flow</td>
+<td><code>SPEC.md</code>, <code>ADR-001</code>,
+<code>auditoria-sprint1.md</code></td>
+</tr>
+<tr>
+<td><strong>Sprint 2</strong></td>
+<td>21 sep — 16 oct</td>
+<td>Núcleo funcional + C4 + tests + wireframes</td>
+<td><code>SPEC v2</code>, C4, <code>reporte-sprint2.md</code>,
+<code>auditoria-sprint2.md</code></td>
+</tr>
+<tr>
+<td><strong>Sprint 3</strong></td>
+<td>19 oct — 13 nov</td>
+<td>API con OpenAPI + seguridad + mobile + despliegue</td>
+<td>contrato YAML, threat model, presupuestos,
+<code>deploy.md</code></td>
+</tr>
+<tr>
+<td><strong>Cierre (técnico)</strong></td>
+<td>17 nov</td>
+<td>Pipeline CI + release v0.1.0 con CHANGELOG + informe final/demo</td>
+<td>CI verde + release + <code>docs/informe-final.md</code></td>
+</tr>
+<tr>
+<td><strong>Defensa integradora (oral)</strong></td>
+<td>19 nov</td>
+<td>—</td>
+<td>defensa individual</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Las fechas exactas están en
+<code>sprint-pp3-config.json</code> y en los
+<code>sprint-config.json</code> de cada carpeta.</strong> Este
+cuadernillo no las duplica: te dice dónde mirar.</p>
+<div class="recorda">
+<p><strong>El cronograma no es tentativo:</strong> cada sprint tiene una
+semana de cierre con fechas límite para mergear PRs. Pasada esa fecha,
+los checklists se cierran y el sprint se audita con lo que hay.</p>
+</div>
+<div class="cierre"><div class="checkpoint">
+<ol type="1">
+<li>¿Qué distingue un objetivo de sprint de una lista de tareas? ¿Qué 4
+elementos lo componen?</li>
+<li>¿Qué columnas tiene el tablero Kanban y cuándo movés una tarjeta a
+<em>Hecho</em>?</li>
+<li>¿Qué registrás en la tarjeta cuando te trabás con una tarea?</li>
+</ol>
+</div><p><strong>Siguiente unidad:</strong> U3 → Git
+Flow y la regla dual</p></div>
+</section>
+</section>
+<section id="git-flow-y-la-regla-dual" class="level1">
+<h1>Git Flow y la regla dual</h1>
+<p>El flujo de trabajo con Git es <strong>obligatorio y
+auditado</strong>. No es una sugerencia: si no hay ramas, commits con
+formato y PRs con plantilla, no hay evidencia que evaluar.</p>
+<section id="el-flujo" class="level2">
+<h2>El flujo</h2>
+<p>Todo cambio arranca igual:</p>
+<pre><code>Issue en Kanban → rama feature/&lt;tema&gt; → commits convencionales → PR con plantilla → checklists completos → merge</code></pre>
+<div class="concepto">
+<p><strong>Rama <code>feature/&lt;tema&gt;</code>:</strong> cada cambio
+tiene su propia rama. No se trabaja sobre <code>main</code> ni sobre
+<code>develop</code>. Si estás arreglando el login, la rama se llama
+<code>feature/login</code>. Si estás agregando tests,
+<code>feature/tests-integracion</code>.</p>
+</div>
+<div class="paso">
+<ol type="1">
+<li>Partiendo de la rama base de tu repo (si ya tenés
+<code>develop</code>:
+<code>git checkout develop &amp;&amp; git pull</code>; en el Sprint 1,
+si tu repo recién creado solo tiene <code>main</code>, partí de
+<code>main</code>)</li>
+<li>Creás la rama:
+<code>git checkout -b feature/&lt;tema&gt;</code></li>
+<li>Hacés commits con formato convencional.</li>
+<li>Pusheás: <code>git push -u origin feature/&lt;tema&gt;</code></li>
+<li>Abrís el Pull Request usando la plantilla oficial.</li>
+<li>Completás la plantilla del PR: trazabilidad del Issue + Quality
+&amp; Security Gate + Git Flow &amp; Convenciones.</li>
+<li>Cuando está aprobado → <strong>mergeás vos mismo</strong> al destino
+correspondiente (en tu repo del Sprint 1: <code>main</code>; en el flujo
+completo: <code>develop</code>).</li>
+<li>Al final del sprint: PR de <code>develop</code> →
+<code>main</code>.</li>
+</ol>
+</div>
+<p><img src="../recursos/diagramas/gitflow-cambio.svg"
+alt="Cadena del cambio" /> <em>Figura — ¿Cómo viaja un cambio desde una
+tarea hasta la versión estable? Representa el flujo de
+<code>docs/arquitectura/DIAGRAMAS_REFERENCIA.md</code> del repo
+PP3.</em></p>
+<p>La referencia visual completa está en
+<code>docs/arquitectura/DIAGRAMAS_REFERENCIA.md</code> del repo PP3, con
+dos diagramas Mermaid: el flujo de trabajo y el ciclo de vida de un
+PR.</p>
+</section>
+<section id="la-regla-dual-esto-es-importante" class="level2">
+<h2>La regla dual (esto es importante)</h2>
+<p>No hay una sola forma de hacer PR: hay dos según
+<strong>dónde</strong> estés trabajando.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Escenario</th>
+<th>Tu repo individual
+(<code>IES9018/&lt;tunombre&gt;-&lt;tuproyecto&gt;</code>)</th>
+<th>Repo de coordinación (<code>IES9018/proyecto-pp3-2026</code>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Quién mergea</strong></td>
+<td><strong>Vos mismo</strong> después de completar los checklists</td>
+<td>El docente (o vos con su aprobación)</td>
+</tr>
+<tr>
+<td><strong>Rama protegida</strong></td>
+<td><code>main</code> y <code>develop</code> — no se puede pushear
+directo</td>
+<td><code>main</code> protegida: PR obligatorio con <strong>1
+aprobación</strong></td>
+</tr>
+<tr>
+<td><strong>Historial</strong></td>
+<td>Reversible: si el merge rompe algo, podés revertir el merge</td>
+<td>Estable: no se revierte sin aviso</td>
+</tr>
+<tr>
+<td><strong>Cuándo se mergea</strong></td>
+<td>Cuando los checklists del PR están completos y los tests pasan</td>
+<td>Cuando el docente aprueba la revisión</td>
+</tr>
+</tbody>
+</table>
+<div class="simple">
+<p>en tu repo, vos sos el dueño — mergeás cuando está listo y si se
+rompe, lo revertís. En el repo de coordinación, el dueño es la cátedra —
+necesitás que alguien más apruebe.</p>
+</div>
+<div class="error">
+<p>creer que la regla dual significa “en mi repo puedo pushear directo a
+main”. <strong>No.</strong> El push directo a <code>main</code> y a
+<code>develop</code> está bloqueado por GitHub en ambos repos. Nadie —ni
+siquiera el docente— puede pushear directo. Siempre es por rama +
+PR.</p>
+</div>
+</section>
+<section id="commits-convencionales" class="level2">
+<h2>Commits convencionales</h2>
+<p>Cada commit tiene un prefijo que dice <strong>qué tipo de
+cambio</strong> es:</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Prefijo</th>
+<th>Cuándo usarlo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>feat:</code></td>
+<td>Una funcionalidad nueva (ej:
+<code>feat: agrega endpoint de login</code>)</td>
+</tr>
+<tr>
+<td><code>fix:</code></td>
+<td>Corrección de un error (ej:
+<code>fix: valida email vacío en registro</code>)</td>
+</tr>
+<tr>
+<td><code>refactor:</code></td>
+<td>Cambio de código sin cambiar comportamiento (plantilla oficial)</td>
+</tr>
+<tr>
+<td><code>docs:</code></td>
+<td>Cambios en documentación (ej:
+<code>docs: actualiza README con setup</code>)</td>
+</tr>
+<tr>
+<td><code>ci:</code></td>
+<td>Cambios en pipeline o configuración de CI (ej:
+<code>ci: agrega lint al workflow</code>)</td>
+</tr>
+<tr>
+<td><code>chore:</code></td>
+<td>Mantenimiento o dependencias (lo lista el README de la cátedra)</td>
+</tr>
+</tbody>
+</table>
+<p>El formato exacto:
+<code>tipo: mensaje en presente, sin mayúscula inicial, sin punto final</code>.</p>
+<pre><code>feat: agrega endpoint POST /solicitudes
+fix: valida formato de email en registro
+docs: agrega sección de Non-Goals a SPEC-template</code></pre>
+<div class="recorda">
+<p><strong>Un commit no es “avances del día”.</strong> Es la unidad más
+chica de cambio con sentido. Si tocaste dos features distintos, son dos
+commits. Si arreglaste un bug y documentaste, son dos commits.</p>
+</div>
+</section>
+<section id="la-plantilla-del-pr" class="level2">
+<h2>La plantilla del PR</h2>
+<p>Cuando abrís un Pull Request, GitHub te muestra automáticamente la
+plantilla institucional (archivo:
+<code>.github/PULL_REQUEST_TEMPLATE.md</code> del repo PP3).</p>
+<p>La plantilla oficial (<code>.github/PULL_REQUEST_TEMPLATE.md</code>
+del repo PP3) tiene <strong>tres zonas</strong> que completás antes de
+mergear. Visualmente se muestra como documento/formulario:</p>
+<div class="pr-template-preview">
+<p><strong>Tipo de Cambio</strong></p>
+<ul>
+<li>feat / fix / refactor / ci / docs</li>
+</ul>
+<p><strong>Trazabilidad de Issue</strong></p>
+<p>Closes #<número de Issue en el tablero></p>
+<p><strong>Checklists de Supervisión Crítica</strong></p>
+<p><strong>Quality &amp; Security Gate</strong></p>
+<ul>
+<li>No se exponen credenciales, tokens ni secrets</li>
+<li>Entradas validadas contra inyección</li>
+<li>Código asistido por IA auditado línea por línea</li>
+<li>Pruebas locales exitosas</li>
+</ul>
+<p><strong>Git Flow &amp; Convenciones</strong></p>
+<ul>
+<li>Commits con convención (feat:, fix:, ci:, docs:)</li>
+<li>Rama con nomenclatura feature/, bugfix/ o hotfix/</li>
+<li>Sin conflictos de merge con develop</li>
+</ul>
+</div>
+<div class="concepto">
+<p><strong>Checklist:</strong> lista de verificación que se tilda antes
+de considerar algo terminado. No es un trámite: si marcás algo sin
+haberlo verificado, la auditoría lo detecta porque tu PR queda como
+evidencia.</p>
+</div>
+</section>
+<section id="ciclo-de-vida-de-un-pr" class="level2">
+<h2>Ciclo de vida de un PR</h2>
+<p>El estado de cada PR se ve en el diagrama oficial del repo:</p>
+<pre><code>Draft → In Review → (Changes Requested → In Review) → Approved → Merged</code></pre>
+<p>No es lineal: si el revisor pide cambios, el PR vuelve a <em>In
+Review</em> hasta que esté correcto.</p>
+<div class="si">
+<p>Mergearas un PR con un checklist sin marcar? Queda en el historial.
+La auditoría revisa PRs mergeados, no solo abiertos. El checklist sin
+marcar es evidencia de que no se verificó algo.</p>
+</div>
+</section>
+<section id="convenciones-adicionales" class="level2">
+<h2>Convenciones adicionales</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Regla</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Commits en español</strong></td>
+<td>El mensaje va en español, el código en inglés (nombres de variables,
+funciones).</td>
+</tr>
+<tr>
+<td><strong>Sin mayúscula inicial</strong></td>
+<td><code>feat: agrega login</code> y no
+<code>feat: Agrega login</code>.</td>
+</tr>
+<tr>
+<td><strong>Sin punto final</strong></td>
+<td>El mensaje no lleva punto.</td>
+</tr>
+<tr>
+<td><strong>Un commit por cambio</strong></td>
+<td>Si necesitás “y además”, partí en dos commits.</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="repaso-rápido" class="level2">
+<h2>Repaso rápido</h2>
+<p><strong>FLUJO COMPLETO</strong> (cuando tu repositorio ya trabaja con
+<code>develop</code>):</p>
+<pre><code>1. feature/&lt;tema&gt; desde develop
+2. commits con prefijo convencional
+3. PR con la plantilla oficial completa
+4. mergeás vos mismo a develop (en TU repo)
+5. al final del sprint: develop → main</code></pre>
+<p><strong>Excepción documentada (Sprint 1):</strong> si tu repo recién
+creado solo posee <code>main</code>, el PR inicial va a
+<code>main</code>, según el CHECKLIST oficial del Sprint 1. No hay una
+tercera modalidad.</p>
+<div class="proyecto">
+<p>En tu sprint (Sprint 1, Fase 3): después de crear la SPEC y el ADR,
+abrí tu primer PR hacia <code>main</code> de TU repo — así lo pide el
+checklist oficial del Sprint 1. En tu repo recién creado todavía no
+existe <code>develop</code>; cuando la adoptes (flujo completo), el
+destino de tus PR pasa a ser <code>develop</code>. En ambos casos: nunca
+push directo, siempre rama + PR con la plantilla, y mergeás vos con los
+checklists completos.</p>
+</div>
+<div class="cierre"><div class="checkpoint">
+<ol type="1">
+<li>¿Qué prefijo lleva un commit que corrige un bug? ¿Y uno que agrega
+un endpoint?</li>
+<li>Explicá la regla dual: ¿quién mergea en tu repo y quién en el repo
+de coordinación?</li>
+<li>¿Cuáles son las secciones principales de la plantilla del PR y qué
+verifican los dos checklists de supervisión crítica?</li>
+</ol>
+</div><p><strong>Siguiente unidad:</strong> U4 →
+SDD en marcha</p></div>
+</section>
+</section>
+<section id="sdd-en-marcha-spec-adr-y-arnés" class="level1">
+<h1>SDD en marcha: SPEC, ADR y arnés</h1>
+<p>El acrónimo SDD (Spec-Driven Development) suena a teoría, pero en PP3
+es el <strong>primer entregable del Sprint 1</strong>. No es “leer sobre
+SDD”, es escribir los archivos que lo implementan.</p>
+<section id="el-archivo-que-manda-spec.md" class="level2">
+<h2>El archivo que manda: SPEC.md</h2>
+<p>Al arrancar el Sprint 1, copiás la plantilla institucional desde
+<code>proyecto-adi-2026/templates/SPEC-template.md</code> a la raíz de
+tu repo y la completás.</p>
+<p>La SPEC tiene 6 secciones, y cada una responde una pregunta
+distinta:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Sección</th>
+<th>Pregunta</th>
+<th>Qué incluye</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Contexto y Propósito</td>
+<td>¿Qué problema resuelve el sistema?</td>
+<td>Una frase de contexto + una de propósito.</td>
+</tr>
+<tr>
+<td>2. Requerimientos Funcionales</td>
+<td>¿Qué hace exactamente?</td>
+<td>Lista de <code>RF-01</code>, <code>RF-02</code>… con criterios de
+aceptación.</td>
+</tr>
+<tr>
+<td>3. Non-Goals</td>
+<td>¿Qué NO hace y por qué?</td>
+<td>Exclusiones explícitas con justificación técnica.</td>
+</tr>
+<tr>
+<td>4. Stack y Restricciones</td>
+<td>¿Con qué se construye?</td>
+<td>Tecnologías, versiones, ADR citados.</td>
+</tr>
+<tr>
+<td>5. Contratos de datos</td>
+<td>¿Cómo se comunican las partes?</td>
+<td>Endpoints, schemas, formatos.</td>
+</tr>
+<tr>
+<td>6. Criterios de aceptación</td>
+<td>¿Cómo sé que está terminado?</td>
+<td>Condiciones verificables por test.</td>
+</tr>
+</tbody>
+</table>
+<div class="concepto">
+<p><strong>Non-Goal:</strong> un objetivo que se decide explícitamente
+<strong>no</strong> perseguir en esta versión. No es una omisión por
+descuido: es una decisión documentada. Ejemplo: “No es una app móvil
+nativa (ver ADR-006)”. Si después alguien pregunta “¿por qué no hay
+app?”, la respuesta está en la SPEC.</p>
+</div>
+<div class="simple">
+<p>la SPEC es el contrato entre vos y tu proyecto. Lo que no está en la
+SPEC, no existe. Lo que está en Non-Goals, no se puede reclamar. Lo que
+está en RF, se tiene que poder mostrar funcionando.</p>
+</div>
+<section id="de-v1-a-v2" class="level3">
+<h3>De v1 a v2</h3>
+<p>La SPEC no es estática. Al abrir el Sprint 2, se actualiza a
+<strong>v2</strong> con:</p>
+<ul>
+<li>Una nueva sección “Restricciones arquitectónicas” que cita tus
+ADRs.</li>
+<li>Un changelog al pie que registra qué cambió entre v1 y v2.</li>
+</ul>
+<pre><code>SPEC.md v1 (Sprint 1): alcance inicial, stack, Non-Goals
+       ↓
+SPEC.md v2 (Sprint 2): + restricciones arquitectónicas citando ADRs
+       ↓
+v3, v4… la SPEC sigue versionándose: el TP5 pide la v5
+con los RNF medibles como requisitos</code></pre>
+<div class="error">
+<p>no tocar la SPEC después del Sprint 1. Una SPEC congelada es peor que
+no tener SPEC: miente sobre el estado real del proyecto. Si el código
+cambió pero la SPEC no, la trazabilidad se rompe y la auditoría lo
+detecta.</p>
+</div>
+</section>
+</section>
+<section id="las-decisiones-que-se-escriben-los-adr" class="level2">
+<h2>Las decisiones que se escriben: los ADR</h2>
+<p>Cada decisión técnica importante se documenta como un
+<strong>Architecture Decision Record (ADR)</strong>. La plantilla está
+en <code>proyecto-adi-2026/templates/ADR-template.md</code>.</p>
+<p>Estructura de un ADR:</p>
+<pre><code># ADR-001: Stack Tecnológico
+
+## Contexto
+¿Qué problema estamos resolviendo y por qué no se resuelve solo?
+
+## Decisión
+Qué elegimos y en qué consiste.
+
+## Alternativas Consideradas
+Al menos 2 alternativas REALES que evaluamos y descartamos, con el motivo.
+
+## Consecuencias
+Qué cambia a partir de esta decisión. Qué se gana y qué se pierde.</code></pre>
+<p>En el Sprint 1, el ADR obligatorio es el <strong>ADR-001</strong> que
+define el stack tecnológico. Debe contener <strong>al menos 2
+alternativas descartadas</strong> con su justificación.</p>
+<div class="proyecto">
+<p>En tu sprint (Sprint 1, Fase 1): creá
+<code>docs/adr/ADR-001-stack-tecnologico.md</code> con:</p>
+<ul>
+<li>Contexto: qué sistema vas a construir y con qué propósito.</li>
+<li>Decisión: stack elegido (lenguaje, framework, base de datos,
+hosting).</li>
+<li>Alternativas: al menos 2 (ej: FastAPI vs Flask, React vs Vue, SQLite
+vs PostgreSQL).</li>
+<li>Consecuencias: qué facilitás y qué dificultás con esta
+decisión.</li>
+</ul>
+</div>
+<p>El proyecto modelo A-gobernanza-digital tiene 7 ADR (ADR-001 a
+ADR-007) que podés leer como ejemplo en
+<code>proyecto-adi-2026/03_ARQUITECTURA/adr/</code>.</p>
+</section>
+<section id="el-arnés-de-ia-.opencoderules" class="level2">
+<h2>El arnés de IA: .opencoderules</h2>
+<p>El archivo <code>.opencoderules</code> en la raíz de tu repo limita
+el comportamiento de OpenCode (o del agente que uses). Define:</p>
+<ul>
+<li><strong>Alcance permitido:</strong> qué archivos y carpetas puede
+tocar el agente.</li>
+<li><strong>Estándares obligatorios:</strong> formato de commits, estilo
+de código, plantillas a usar.</li>
+<li><strong>Prácticas prohibidas:</strong> qué no puede hacer el agente
+(ej: modificar SPEC sin avisar).</li>
+</ul>
+<pre><code>🛡️ ALCANCE PERMITIDO
+  - src/ → código fuente
+  - docs/ → documentación y ADR
+  - SPEC.md → leer, sugerir cambios en PR
+
+📋 ESTÁNDARES OBLIGATORIOS
+  - Commits: feat/fix/docs/ci/chore
+  - Tests: pytest con aserciones significativas
+  - Contratos: OpenAPI 3.x primero
+
+🚫 PRÁCTICAS PROHIBIDAS
+  - No modificar SPEC.md sin PR
+  - No incluir secrets en ningún archivo
+  - No pushear directo a main o develop</code></pre>
+<div class="importa">
+<p>Porque el arnés es lo que permite que uses IA sin que la IA decida
+por vos. El docente revisa que el arnés esté configurado correctamente
+(que no sea el default vacío). Si no hay arnés, el código asistido no
+tiene reglas → el PR no se puede auditar.</p>
+</div>
+<p>El archivo <code>INSTRUCTIONS.md</code> es opcional y complementa el
+arnés con instrucciones en lenguaje natural para el agente.</p>
+<div class="paso">
+<p><strong>Puesta en marcha del SDD</strong> 1. Copiá
+<code>SPEC-template.md</code> a la raíz → completá secciones 1 a 4
+(Sprint 1). 2. Creá <code>docs/adr/ADR-001.md</code> con stack y 2
+alternativas descartadas. 3. Creá <code>.opencoderules</code> con
+alcance, estándares y prohibiciones. 4. Commit + PR con la plantilla. 5.
+El docente revisa estructura (no contenido): si la plantilla está
+completa, Fase 1 aprobada.</p>
+</div>
+<div class="recorda">
+<p><strong>La SPEC se escribe antes del código.</strong> Si ya tenés
+código sin SPEC, detenete, escribí la SPEC, después seguí. El orden no
+es burocrático: es la diferencia entre un proyecto con rumbo y un
+proyecto que “ya veremos”.</p>
+</div>
+<div class="cierre"><div class="checkpoint">
+<ol type="1">
+<li>¿Qué secciones tiene la SPEC y qué pregunta responde cada una?</li>
+<li>¿Qué debe contener como mínimo el ADR-001?</li>
+<li>¿Qué tres zonas define el arnés <code>.opencoderules</code>?</li>
+</ol>
+</div><p><strong>Siguiente unidad:</strong> U5 →
+Arquitectura viva: C4</p></div>
+</section>
+</section>
+<section id="arquitectura-viva-c4-en-tu-repo" class="level1">
+<h1>Arquitectura viva: C4 en tu repo</h1>
+<p>El Sprint 2 arranca con una tarea que no es código: dibujar la
+arquitectura de tu proyecto en <strong>2 niveles del modelo C4</strong>
+(contexto y contenedores). No es un diagrama decorativo: es el mapa
+contra el que se mide cada decisión técnica.</p>
+<section id="qué-es-c4" class="level2">
+<h2>Qué es C4</h2>
+<p>C4 es una notación de diagramas arquitectónicos que va de lo más
+general a lo más detallado en 4 niveles. En PP3 se piden los primeros
+2:</p>
+<pre><code>C1 — Contexto        │ el sistema y sus actores externos
+C2 — Contenedores    │ las piezas grandes (frontend, API, DB)</code></pre>
+<div class="concepto">
+<p><strong>C1 (Contexto):</strong> muestra tu sistema como una caja en
+el centro y las entidades con las que se comunica (usuarios, APIs
+externas, sistemas legacy) como otras cajas alrededor. No importan los
+detalles internos: importa qué límites tiene tu sistema.</p>
+</div>
+<div class="concepto">
+<p><strong>C2 (Contenedores):</strong> desglosa la caja central de C1 en
+las piezas que la componen: un frontend web, una API, una base de datos,
+un worker de tareas, etc. Cada contenedor se conecta con flechas que
+indican el protocolo de comunicación (HTTP, WebSocket, SQL).</p>
+</div>
+<div class="simple">
+<p>C1 es la foto satelital (se ve el barrio). C2 es el zoom a la manzana
+(se ven los edificios). El nivel C3 (componentes) y C4 (código) no se
+piden en PP3, pero si los dibujás, mejor.</p>
+</div>
+</section>
+<section id="dónde-va-y-qué-debe-contener" class="level2">
+<h2>Dónde va y qué debe contener</h2>
+<p>Los diagramas se guardan en <code>docs/arquitectura/</code> con el
+formato que prefieras (Mermaid, PNG, SVG). Lo importante no es la
+herramienta: es que <strong>cada elemento del diagrama sea trazable a un
+elemento de la SPEC o de un ADR</strong>.</p>
+<p><img src="../recursos/diagramas/trazabilidad-cadena.svg"
+alt="Cadena de trazabilidad" /> <em>Figura — ¿Cómo se mantiene la
+trazabilidad entre lo que decidí, diseñé, implementé y verifiqué? Es la
+regla de oro de la clase SDD-C4-SPEC del repo ADI proyecto.</em></p>
+</section>
+<section id="regla-de-oro-del-c4-en-pp3" class="level2">
+<h2>Regla de oro del C4 en PP3</h2>
+<blockquote>
+<p><strong>Si aparece en el diagrama, tiene que aparecer en la SPEC o en
+un ADR. Y viceversa.</strong></p>
+</blockquote>
+<p>Ejemplo: si en tu C2 dibujás “Base de Datos”, en la SPEC o en un ADR
+tiene que estar la decisión de qué base de datos es y por qué. Si en la
+SPEC decís “PostgreSQL”, en C2 no podés dibujar “SQLite”.</p>
+<div class="error">
+<p>dibujar un C2 con 8 contenedores cuando la SPEC describe 3 features.
+Señal de sobreingeniería: estás pensando en infraestructura antes de
+tener problemas de infraestructura. Si tenés dudas, arrancá con 2
+contenedores: frontend y API (con DB dentro de API como módulo).</p>
+</div>
+</section>
+<section id="ejemplo-real-del-proyecto-modelo" class="level2">
+<h2>Ejemplo real del proyecto modelo</h2>
+<p>El repo <code>proyecto-adi-2026</code> tiene el C4 completo de
+A-gobernanza-digital en
+<code>03-proyectos/A-gobernanza-digital/03_ARQUITECTURA/</code>. Podés
+leerlos como referencia:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Archivo</th>
+<th>Nivel</th>
+<th>Contenido</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>diagrama-contexto-c4.md</code></td>
+<td>C1</td>
+<td>Sistema Gobernanza Digital y sus actores: Solicitante, Admin
+Técnico, Directivo, Consejo Directivo, Comunidad Educativa</td>
+</tr>
+<tr>
+<td><code>diagrama-contenedores-c4.md</code></td>
+<td>C2</td>
+<td>Servidor escolar Debian 12: Nginx → React + Vite (SPA) → API, con
+protocolos HTTPS y SQL</td>
+</tr>
+<tr>
+<td><code>diagrama-componentes-c4.md</code></td>
+<td>C3</td>
+<td>Interior de la API por componentes</td>
+</tr>
+</tbody>
+</table>
+<div class="proyecto">
+<p>En tu sprint (Sprint 2, Fase 1): actualizá tu <code>SPEC.md</code> a
+v2 agregando la sección “Restricciones arquitectónicas” y creá
+<code>docs/arquitectura/</code> con los diagramas C1 y C2. No necesitan
+ser perfectos: necesitan ser trazables.</p>
+</div>
+</section>
+<section id="herramientas-para-dibujar-c4" class="level2">
+<h2>Herramientas para dibujar C4</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Herramienta</th>
+<th>Ventaja</th>
+<th>Dónde obtenerla</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Mermaid</strong> (diagramas C4)</td>
+<td>Se escribe como texto, vive en el repo, el pipeline lo
+renderiza</td>
+<td>Sintaxis: <code>c4context</code> / <code>c4container</code></td>
+</tr>
+<tr>
+<td><strong>Draw.io / diagrams.net</strong></td>
+<td>Interfaz visual, exporta a SVG</td>
+<td>Web o app de escritorio</td>
+</tr>
+<tr>
+<td><strong>Lápiz y papel → foto → repo</strong></td>
+<td>Válido para C1 si no usás otra</td>
+<td>La foto va en <code>docs/arquitectura/</code></td>
+</tr>
+</tbody>
+</table>
+<p>La cátedra prefiere Mermaid porque el diagrama se versiona como texto
+y no se pierde. El repo PP3 tiene ejemplos en
+<code>docs/arquitectura/DIAGRAMAS_REFERENCIA.md</code>.</p>
+<div class="recorda">
+<p><strong>Un diagrama sin etiqueta de pregunta no sirve.</strong> Cada
+diagrama de este cuadernillo responde una pregunta. El tuyo también: al
+pie del diagrama, escribí “¿Qué pregunta responde este diagrama?” si no
+podés responderla, el diagrama no está cumpliendo su función.</p>
+</div>
+<div class="cierre"><div class="checkpoint">
+<ol type="1">
+<li>¿Qué muestra C1 (contexto) y qué muestra C2 (contenedores)?</li>
+<li>¿Cuál es la regla de oro entre los diagramas y la SPEC/los ADR?</li>
+<li>¿Por qué la cátedra prefiere Mermaid sobre una imagen
+exportada?</li>
+</ol>
+</div><p><strong>Siguiente unidad:</strong> U6
+→ Núcleo funcional e interfaz crítica</p></div>
+</section>
+</section>
+<section id="núcleo-funcional-e-interfaz-crítica" class="level1">
+<h1>Núcleo funcional e interfaz crítica</h1>
+<p>El Sprint 2 tiene dos entregas grandes que van de la mano: los
+features del sistema tienen que funcionar <strong>en local</strong> y
+las pantallas más importantes tienen que estar
+<strong>diseñadas</strong>.</p>
+<section id="qué-es-núcleo-funcional" class="level2">
+<h2>Qué es “núcleo funcional”</h2>
+<p>No es todo el sistema. Son los features que definen el propósito de
+tu proyecto: si no funcionan, el sistema no sirve para nada.</p>
+<div class="concepto">
+<p><strong>RF-01..RF-n operativos:</strong> los Requerimientos
+Funcionales principales de tu SPEC corriendo en tu máquina local. No en
+un servidor, no en producción: en local, con tus herramientas,
+verificables. Si la SPEC dice “RF-01: el usuario puede registrarse” y
+ves el formulario de registro funcionando, está operativo.</p>
+</div>
+<p>La regla para elegir cuáles implementar:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>El feature…</th>
+<th>Incluilo si…</th>
+<th>Dejalo para después si…</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RF-01 a RF-n (los primeros)</strong></td>
+<td>Define el propósito del sistema</td>
+<td>Es una mejora estética</td>
+</tr>
+<tr>
+<td>Tiene validación de datos</td>
+<td>Muestra que manejás errores</td>
+<td>Depende de un servicio externo que no configuraste</td>
+</tr>
+<tr>
+<td>Lo usa el flujo principal</td>
+<td>Sin esto no hay demo</td>
+<td>Solo lo usa el admin una vez por mes</td>
+</tr>
+</tbody>
+</table>
+<div class="error">
+<p>implementar 10 features a medias en vez de 3 features completos. Un
+feature completo se puede demostrar, tiene test y está documentado. Un
+feature a medias no sirve ni para mostrar ni para auditar.</p>
+</div>
+</section>
+<section id="personas-y-journeys-antes-del-diseño" class="level2">
+<h2>Personas y journeys: antes del diseño</h2>
+<p>Antes de dibujar cualquier pantalla, definí <strong>quién la
+usa</strong> y <strong>qué necesita hacer</strong>.</p>
+<div class="concepto">
+<p><strong>Persona:</strong> perfil ficticio de un usuario típico con
+nombre, objetivos, habilidades técnicas y contexto. No es un
+estereotipo: es una herramienta de diseño. “María, 45 años, técnico
+municipal, usa la compu 3 horas por día, prefiere formularios
+simples.”</p>
+</div>
+<div class="concepto">
+<p><strong>Journey map:</strong> el recorrido que hace una persona para
+completar una tarea, paso a paso, con sus emociones, dudas y momentos de
+fricción. “1. Abre el sistema → 2. Busca el botón de carga → 3. No lo
+encuentra → 4. Pregunta a un compañero → 5. Completa el formulario.”</p>
+</div>
+</section>
+<section id="las-2-pantallas-críticas" class="level2">
+<h2>Las 2 pantallas críticas</h2>
+<p>Del journey map, sacás las pantallas que tienen más impacto en el
+éxito de la tarea. Esas son las que <strong>wireframeás</strong>.</p>
+<div class="simple">
+<p>no wireframeés las 20 pantallas del sistema. Wireframeá las 2 que, si
+están mal, hacen que el usuario abandone. Para el resto, alcanza con
+describirlas en texto en la SPEC.</p>
+</div>
+<p><strong>Wireframe</strong> (baja fidelidad): dibujo esquemático sin
+colores, sin tipografía final, sin imágenes. Solo estructura. Se puede
+hacer en papel, en Figma, en Mermaid o en Markdown.</p>
+<p>El repositorio de ADI proyecto tiene 4 wireframes reales en
+<code>06_INTERFAZ_USUARIO/wireframes/</code> que podés usar como
+referencia de formato.</p>
+</section>
+<section id="accesibilidad-básica" class="level2">
+<h2>Accesibilidad básica</h2>
+<p>No se trata de cumplir todas las pautas WCAG. Se trata de no cometer
+los errores que hacen que una interfaz sea inusable para alguien:</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Regla mínima</th>
+<th>Cómo verificarlo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Contraste suficiente</strong></td>
+<td>Texto sobre fondo: probá en blanco y negro. Si no se lee, no
+pasa.</td>
+</tr>
+<tr>
+<td><strong>Tamaño mínimo de blancos táctiles</strong></td>
+<td>Botones y enlaces: ≥ 48 × 48 px (objetivo táctil, no visual).</td>
+</tr>
+<tr>
+<td><strong>Textos en imágenes</strong></td>
+<td>No. Si es información, va como texto HTML.</td>
+</tr>
+<tr>
+<td><strong>Etiquetas visibles</strong></td>
+<td>Cada campo de formulario tiene una etiqueta visible, no solo
+placeholder.</td>
+</tr>
+</tbody>
+</table>
+<div class="importa">
+<p>¿Por qué importa la accesibilidad? Porque no es un “plus”. Los
+criterios de evaluación incluyen accesibilidad en el 40% de
+implementación. Si la auditoría detecta que un botón tiene menos de 48
+px de target táctil, es una observación documentada.</p>
+</div>
+<div class="proyecto">
+<p>En tu sprint (Sprint 2, Fase 2-3): después de tener los RF
+operativos, definí 2 personas, dibujá su journey map, wireframeá las 2
+pantallas críticas e implementalas respetando accesibilidad básica. Cada
+pantalla va a su PR con su propio feature branch.</p>
+</div>
+<div class="recorda">
+<p><strong>“Operativo en local” ≠ “desplegado”.</strong> No necesitás un
+servidor público para el Sprint 2. Necesitás que funcione en tu máquina
+y que se pueda demostrar. El deploy llega en el Sprint 3.</p>
+</div>
+<div class="cierre"><div class="checkpoint">
+<ol type="1">
+<li>¿Qué significa que un RF está “operativo en local”? ¿En qué sprint
+se exige?</li>
+<li>¿Por qué se wireframean solo 2 pantallas críticas y no todas?</li>
+<li>Nombrá dos reglas mínimas de accesibilidad y cómo se verifican.</li>
+</ol>
+</div><p><strong>Siguiente unidad:</strong> U7 →
+Calidad local: tests que cuentan</p></div>
+</section>
+</section>
+<section id="calidad-local-tests-que-cuentan" class="level1">
+<h1>Calidad local: tests que cuentan</h1>
+<p>El Sprint 2 exige <strong>≥ 10 tests verdes corriendo
+localmente</strong>. No es un número al azar: son los tests de tu núcleo
+funcional.</p>
+<section id="qué-tipo-de-tests" class="level2">
+<h2>Qué tipo de tests</h2>
+<p>La pirámide de testing aplicada a tu proyecto:</p>
+<pre><code>        ┌──────┐
+        │ E2E  │  ← pocos, lentos, caros
+       ┌┴──────┴┐
+       │ Integ. │  ← algunos, medianos
+     ┌─┴────────┴─┐
+     │ Unitarios  │  ← la mayoría, rápidos, baratos
+     └────────────┘</code></pre>
+<p>Para el Sprint 2, la prioridad son <strong>tests unitarios</strong>:
+rápidos, sin red, sin base de datos real (mockeada o en memoria). Si te
+sobra tiempo, agregá 1 o 2 de integración.</p>
+<div class="concepto">
+<p><strong>Test unitario:</strong> prueba que verifica una función o
+método de forma aislada, sin depender de otros componentes. Si tu
+función <code>validar_email()</code> recibe un string y devuelve
+<code>True/False</code>, el test unitario prueba ambos casos.</p>
+</div>
+</section>
+<section id="non-goals-de-testing" class="level2">
+<h2>Non-Goals de testing</h2>
+<p>Tan importante como lo que testés es saber <strong>qué no estás
+testeando</strong>. Se documenta en el reporte del sprint:</p>
+<pre><code>Cubierto:
+  - validación de datos de entrada (unitario)
+  - lógica de negocio del feature principal (unitario)
+  - flujo de registro http 201 (integración)
+
+NO cubierto (Non-Goals de testing):
+  - rendimiento bajo carga → se define en Sprint 3
+  - seguridad → se cubre con threat model en Sprint 3
+  - E2E en navegador → no hay playwright configurado aún</code></pre>
+<div class="simple">
+<p>un test que no dice qué NO cubre es un test que promete más de lo que
+puede. El Non-Goal de testing es tan importante como el de la SPEC:
+protege tu alcance.</p>
+</div>
+</section>
+<section id="el-reporte-del-sprint" class="level2">
+<h2>El reporte del sprint</h2>
+<p>Cada sprint se cierra con un informe de auditoría en
+<code>docs/auditoria/auditoria-sprint2.md</code>. Debe contener:</p>
+<ul>
+<li><strong>Lista de tests</strong> con lo que cubre cada uno
+(referenciando RF si aplica).</li>
+<li><strong>Non-Goals de testing</strong> (explícitos, tabla).</li>
+<li><strong>Errores hallados en código asistido por IA</strong> y sus
+correcciones con links a PRs.</li>
+</ul>
+<p>El formato es libre, pero la evidencia es obligatoria. Si no hay
+reporte, el sprint no está cerrado.</p>
+<pre><code>auditoria-sprint2.md
+├── Tests (≥ 10): RF-01..RF-n cubiertos
+├── Non-Goals de testing
+├── Errores IA detectados → correcciones en PR-xx, PR-xy
+└── Estado del sprint: PASS / FAIL</code></pre>
+<div class="proyecto">
+<p>En tu sprint (Sprint 2, Fase 4): escribí la suite de tests, corrélos,
+verificá que estén verdes. Después creá
+<code>docs/pruebas/reporte-sprint2.md</code> con el detalle. Al cerrar
+el sprint, el informe de auditoría va a
+<code>docs/auditoria/auditoria-sprint2.md</code>.</p>
+</div>
+</section>
+<section id="bonus-apéndice-de-testing-de-consistencia" class="level2">
+<h2>Bonus: apéndice de testing de consistencia</h2>
+<p>El apéndice avanzado de Testing de Consistencia y Trazabilidad (bonus
+de <strong>+1 punto</strong>) se explica completo en la U11. En esta
+unidad solo lo mencionamos porque se construye sobre los tests del
+Sprint 2:</p>
+<p>Un flujo crítico con 3 escenarios (happy path, validación, control de
+acceso) + matriz de trazabilidad + datos sintéticos. Si te interesa, leé
+la U11 antes de cerrar el Sprint 2.</p>
+<div class="recorda">
+<p>Una prueba sin aserciones significativas no cuenta como evidencia
+válida de testing. Lo establece así el README de la cátedra para el
+bonus de testing de consistencia — y es la regla profesional en general:
+un test que no verifica nada, no verifica.</p>
+</div>
+<div class="cierre"><div class="checkpoint">
+<ol type="1">
+<li>¿Qué nivel de la pirámide prioriza el Sprint 2 y por qué?</li>
+<li>¿Qué es un Non-Goal de testing y dónde se documenta?</li>
+<li>¿Qué hace que una prueba no cuente como evidencia válida de
+testing?</li>
+</ol>
+</div><p><strong>Siguiente unidad:</strong> U8 → Contratos y seguridad</p></div>
+</section>
+</section>
+<section id="contratos-y-seguridad" class="level1">
+<h1>Contratos y seguridad</h1>
+<p>En el Sprint 3 primero se escribe el contrato, después se implementa
+la API, después se modelan las amenazas y después se aplican
+mitigaciones. Ese orden no es casual.</p>
+<section id="contratos-antes-que-código-openapi" class="level2">
+<h2>Contratos antes que código: OpenAPI</h2>
+<p>El entregable <code>DEL-S3-01</code> pide un archivo
+<code>api-contracts.yaml</code> (OpenAPI 3.x) con <strong>al menos 5
+endpoints críticos</strong> de tu sistema, validados por un linter sin
+errores.</p>
+<div class="concepto">
+<p><strong>OpenAPI 3.x:</strong> estándar para describir APIs REST. En
+un archivo YAML o JSON definís: rutas, métodos, parámetros, schemas de
+request/response, códigos de error y esquemas de seguridad. Es el
+contrato entre frontend y backend.</p>
+</div>
+<p>La regla: <strong>todo cambio de endpoint empieza en el
+YAML.</strong> Si necesitás un nuevo campo en la respuesta, primero lo
+escribís en <code>api-contracts.yaml</code>, después lo implementás en
+el código.</p>
+<pre><code>api-contracts.yaml (contrato)
+       │
+       ▼
+Implementación (FastAPI / Express / etc.)
+       │
+       ▼
+Tests (validan que el código cumple el contrato)</code></pre>
+<p>Los ADR del modelo (ej.: <code>ADR-003-autenticacion-jwt.md</code>)
+muestran cómo se documenta una decisión de seguridad; la consigna del
+TP4 (<code>trabajos-practicos/tp4-arquitectura-web/</code>) define los
+requisitos del contrato.</p>
+<div class="error">
+<p>escribir el YAML después de la API, mirando el código para saber qué
+documentar. El contrato tiene que ir <strong>antes</strong>: es la
+especificación que la API debe cumplir. Si la API se escribió primero,
+el contrato está sesgado.</p>
+</div>
+</section>
+<section id="threat-model-lite-stride" class="level2">
+<h2>Threat model lite: STRIDE</h2>
+<p>El entregable <code>DEL-S3-02</code> pide un threat model con
+<strong>≥ 5 amenazas</strong> sobre tus endpoints reales, usando el
+marco STRIDE.</p>
+<div class="concepto">
+<p><strong>STRIDE:</strong> acrónimo de 6 categorías de amenazas. Cada
+letra es una pregunta:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Letra</th>
+<th>Amenaza</th>
+<th>Pregunta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>S</strong></td>
+<td>Spoofing (suplantación)</td>
+<td>¿Alguien puede hacerse pasar por otro?</td>
+</tr>
+<tr>
+<td><strong>T</strong></td>
+<td>Tampering (manipulación)</td>
+<td>¿Alguien puede modificar datos en tránsito?</td>
+</tr>
+<tr>
+<td><strong>R</strong></td>
+<td>Repudiation (repudio)</td>
+<td>¿Alguien puede negar haber hecho algo?</td>
+</tr>
+<tr>
+<td><strong>I</strong></td>
+<td>Information Disclosure (fuga)</td>
+<td>¿Alguien no autorizado puede leer datos?</td>
+</tr>
+<tr>
+<td><strong>D</strong></td>
+<td>Denial of Service (denegación)</td>
+<td>¿Alguien puede dejar el sistema fuera de servicio?</td>
+</tr>
+<tr>
+<td><strong>E</strong></td>
+<td>Elevation of Privilege (escalada)</td>
+<td>¿Alguien puede hacer cosas de admin sin serlo?</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Para cada endpoint de tu API, recorrés las 6 preguntas. Si alguna
+tiene respuesta afirmativa (o “no lo sé”), es una amenaza que necesita
+mitigación.</p>
+<pre><code>Endpoint: POST /solicitudes
+  - S: el request no tiene autenticación → riesgo alto
+  - T: los datos viajan en HTTP → riesgo medio (pasa a HTTPS)
+  - I: el body contiene datos personales → riesgo alto (cifrar en tránsito)
+  - E: cualquier usuario puede crear solicitudes → riesgo medio (validar rol)</code></pre>
+</section>
+<section id="mitigaciones-aplicadas" class="level2">
+<h2>Mitigaciones aplicadas</h2>
+<p>Cada amenaza identificada tiene que tener una <strong>mitigación
+aplicada en el código</strong> y documentada en
+<code>docs/seguridad/</code>. No alcanza con listar las amenazas: hay
+que mostrar qué se hizo.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Amenaza</th>
+<th>Mitigación</th>
+<th>Dónde se ve</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Spoofing</td>
+<td>JWT + OAuth2 en todos los endpoints protegidos</td>
+<td><code>ADR-003</code>, código de autenticación</td>
+</tr>
+<tr>
+<td>Manipulación</td>
+<td>HTTPS forzado a nivel de servidor nginx</td>
+<td><code>docs/seguridad/https.md</code></td>
+</tr>
+<tr>
+<td>Fuga de datos</td>
+<td>Respuestas sin campos sensibles (modelo de datos)</td>
+<td><code>schemas.py</code> en dominio</td>
+</tr>
+</tbody>
+</table>
+<div class="proyecto">
+<p>En tu sprint (Sprint 3, Fase 1-2): creá
+<code>api-contracts.yaml</code> con 5 endpoints, corré el linter,
+implementá la API. Después completá el threat model y aplicá las
+mitigaciones. Todo queda documentado en
+<code>docs/seguridad/</code>.</p>
+</div>
+</section>
+<section id="secretos-donde-no-deben-estar" class="level2">
+<h2>Secretos: donde no deben estar</h2>
+<p>Un tema recurrente en las auditorías es la exposición de secretos.
+Checklist de verificación:</p>
+<table>
+<thead>
+<tr>
+<th>¿Dónde está tu secreto?</th>
+<th>¿Puede filtrarse en un commit?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Variables de entorno</td>
+<td>No, si <code>.env</code> está en <code>.gitignore</code></td>
+</tr>
+<tr>
+<td>Archivo <code>.env</code> en el repo</td>
+<td><strong>Sí.</strong> No debe estar.</td>
+</tr>
+<tr>
+<td>Hardcodeado en el código</td>
+<td><strong>Sí.</strong> No debe estar.</td>
+</tr>
+<tr>
+<td>En un vault de CI (GitHub Secrets)</td>
+<td>No. Correcto.</td>
+</tr>
+<tr>
+<td>En un log</td>
+<td><strong>Sí.</strong> Los logs se suben a veces.</td>
+</tr>
+</tbody>
+</table>
+<p>La herramienta <code>gitleaks</code> escanea el historial de git en
+busca de secretos expuestos. Se ejecuta en el pipeline de CI del
+cierre.</p>
+<div class="recorda">
+<p><strong>Un secreto expuesto no se arregla con un nuevo
+commit.</strong> Si subiste una clave a git, esa clave está comprometida
+desde ese commit para siempre. Rotá la clave inmediatamente. No confíes
+en “la borré después”.</p>
+</div>
+<div class="cierre"><div class="checkpoint">
+<ol type="1">
+<li>¿Qué se escribe primero: el <code>api-contracts.yaml</code> o el
+código de la API? ¿Por qué?</li>
+<li>¿Qué significa cada letra de STRIDE? (nombrá al menos 3)</li>
+<li>¿Dónde nunca debe estar un secreto? ¿Qué hacés si uno quedó expuesto
+en un commit?</li>
+</ol>
+</div><p><strong>Siguiente unidad:</strong> U9 → Mobile medible y despliegue</p></div>
+</section>
+</section>
+<section id="mobile-medible-y-despliegue-funcional" class="level1">
+<h1>Mobile medible y despliegue funcional</h1>
+<p>El Sprint 3 cierra con dos entregables que definen si tu proyecto es
+“una app que funciona” o “una app que se puede mostrar”.</p>
+<section id="la-decisión-mobile-adr-006" class="level2">
+<h2>La decisión mobile: ADR-006</h2>
+<p>Antes de adaptar una pantalla a mobile, tenés que decidir <strong>qué
+estrategia mobile usás</strong>. Esa decisión se documenta como un ADR
+(ADR-006) con una <strong>matriz de decisión explícita</strong>: filas =
+criterios de TU contexto, columnas = opciones, <strong>celdas
+justificadas</strong> (así la pide la consigna del TP5):</p>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr>
+<th>Criterio (TU contexto)</th>
+<th>Responsive</th>
+<th>PWA</th>
+<th>Nativa</th>
+<th>Híbrida</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>¿Costo de mantenimiento con 1 desarrollador?</td>
+<td>✅</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>¿Necesitás uso offline real?</td>
+<td>❌</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>¿Necesitás hardware del dispositivo (cámara, sensores)?</td>
+<td>❌</td>
+<td>❌</td>
+<td>✅</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>¿Cuánto tiempo queda hasta el cierre de PP3?</td>
+<td>✅</td>
+<td>✅</td>
+<td>❌</td>
+<td>~</td>
+</tr>
+</tbody>
+</table>
+<p><strong>No hay puntaje:</strong> las celdas no se suman. Se
+justifican. Si tu app no necesita offline ni hardware, responsive/PWA
+gana la matriz para tu contexto aunque “Nativa” tenga más ✓. La consigna
+del TP5 lo dice explícito: <em>premia la decisión fundamentada, no la
+tecnología cara</em>.</p>
+</section>
+<section id="presupuestos-de-rendimiento" class="level2">
+<h2>Presupuestos de rendimiento</h2>
+<p>La diferencia entre “se ve bien en mobile” y “funciona en mobile” son
+los <strong>números</strong>. El TP5 pide presupuestos
+<strong>numéricos</strong> con la <strong>herramienta concreta</strong>
+que los verifica:</p>
+<table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>Presupuesto</th>
+<th>Cómo se mide</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>LCP</strong> (Largest Contentful Paint)</td>
+<td>&lt; 2.5 s en 4G</td>
+<td>Lighthouse CI</td>
+</tr>
+<tr>
+<td><strong>INP</strong> (Interaction to Next Paint)</td>
+<td>&lt; 200 ms</td>
+<td>Lighthouse CI</td>
+</tr>
+<tr>
+<td><strong>Peso JS inicial</strong></td>
+<td>&lt; 200 KB gzip</td>
+<td><code>source-map-explorer</code></td>
+</tr>
+</tbody>
+</table>
+<p>Los presupuestos son para las <strong>2 pantallas críticas del
+TP3</strong> reinterpretadas en breakpoint móvil (&lt; 400 px), y al
+menos uno debe poder correr en CI. El resultado se documenta en
+<code>docs/arquitectura/presupuestos-rendimiento.md</code>.</p>
+<div class="concepto">
+<p>Presupuesto de rendimiento: un número que decidís
+<strong>antes</strong> de medir y que no podés superar. Si el
+presupuesto es LCP &lt; 2.5 s y tu página tarda 4 s, el error no es de
+la medición: es que no cumpliste el presupuesto y necesitás
+optimizar.</p>
+</div>
+<p>La herramienta la define la consigna del TP5 (Lighthouse CI,
+<code>source-map-explorer</code>) — no la inventás vos.</p>
+</section>
+<section id="despliegue-funcional" class="level2">
+<h2>Despliegue funcional</h2>
+<p>El entregable <code>DEL-S3-04</code> es
+<code>docs/deploy/deploy.md</code>. No necesitás una URL pública (aunque
+es mejor si la tenés). Necesitás un documento que describa:</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Sección</th>
+<th>Pregunta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stack de despliegue</td>
+<td>¿Con qué está montado? (Docker, nginx, servidor VPS,
+Cloudflare…)</td>
+</tr>
+<tr>
+<td>Pasos para reproducir</td>
+<td>Si otro desarrollador clona tu repo, ¿qué comandos ejecuta para
+tenerlo funcionando?</td>
+</tr>
+<tr>
+<td>Decisiones de infraestructura</td>
+<td>¿Por qué elegiste ese hosting y no otro?</td>
+</tr>
+<tr>
+<td>Postmortem</td>
+<td>¿Qué salió mal durante el despliegue? ¿Qué harías distinto?</td>
+</tr>
+</tbody>
+</table>
+<pre><code>docs/deploy/deploy.md
+├── Stack: Docker + nginx + Cloudflare Tunnel
+├── Pasos:
+│   1. docker-compose up --build
+│   2. nginx config en ./deploy/nginx.conf
+│   3. Tunnel: cloudflared tunnel --url https://tudominio.trycloudflare.com
+├── Por qué esto y no otro: …
+└── Lo que salió mal: …</code></pre>
+<div class="proyecto">
+<p>En tu sprint (Sprint 3, Fase 3-4): primero decidí la estrategia
+mobile (ADR-006), medí presupuestos con la herramienta asignada, adaptá
+las pantallas críticas a breakpoint móvil (≥ 48 px targets táctiles) y
+documentá el despliegue. El deploy no tiene que ser perfecto: tiene que
+estar documentado.</p>
+</div>
+<div class="recorda">
+<p><strong>“Medido” no es lo mismo que “estimado”.</strong> Una captura
+de Lighthouse corriendo hoy es evidencia. “Creo que anda bien” no lo es.
+Si no hay captura o salida de herramienta, el presupuesto no está
+medido.</p>
+</div>
+<div class="cierre"><div class="checkpoint">
+<ol type="1">
+<li>¿Qué criterios usa la matriz de decisión mobile y cómo justificás la
+opción elegida?</li>
+<li>¿Qué presupuestos define TP5 y con qué herramienta se verifica cada
+uno?</li>
+<li>¿Qué cuatro secciones debe tener <code>deploy.md</code>?</li>
+</ol>
+</div><p><strong>Siguiente unidad:</strong> U10 →
+Documentación legal y licencias</p></div>
+</section>
+</section>
+<section id="documentación-legal-y-licencias" class="level1">
+<h1>Documentación legal y licencias</h1>
+<p>El programa de PP3 incluye una unidad entera (U6) dedicada a
+legislación informática. No es un trámite separado del proyecto: es
+parte del entregable.</p>
+<section id="datos-personales-y-responsabilidades" class="level2">
+<h2>Datos personales y responsabilidades</h2>
+<p>Si tu sistema maneja datos de personas reales (alumnos, ciudadanos,
+técnicos, clientes), tenés obligaciones legales. No importa que sea un
+proyecto académico: si los datos existen, hay responsabilidad.</p>
+<div class="concepto">
+<p><strong>Dato personal:</strong> cualquier información que identifique
+o pueda identificar a una persona física (nombre, DNI, email, dirección
+IP, foto). En Argentina, la Ley 25.326 de Protección de Datos Personales
+regula su tratamiento.</p>
+</div>
+<div class="simple">
+<p>si en tu sistema alguien se registra con nombre y email, ese es un
+dato personal. No lo compartas, no lo guardes de más, no lo subas a
+GitHub aunque sea “solo para pruebas”. Usá datos sintéticos (falsos,
+generados) para desarrollo.</p>
+</div>
+<p>El apéndice avanzado de testing de consistencia (bonus +1) exige
+<strong>datos sintéticos aislados, repetibles y protegidos</strong>. No
+se puede usar datos reales de personas en las pruebas.</p>
+</section>
+<section id="propiedad-intelectual-y-licenciamiento" class="level2">
+<h2>Propiedad intelectual y licenciamiento</h2>
+<p>Todo software tiene una licencia que dice qué puede hacer otro con tu
+código. Elegir la correcta es parte del entregable.</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Licencia</th>
+<th>Permite uso comercial</th>
+<th>Permite modificar</th>
+<th>Obliga a compartir mejoras</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MIT</strong></td>
+<td>Sí</td>
+<td>Sí</td>
+<td>No</td>
+</tr>
+<tr>
+<td><strong>Apache 2.0</strong></td>
+<td>Sí</td>
+<td>Sí</td>
+<td>No (pero pide atribución)</td>
+</tr>
+<tr>
+<td><strong>GPL v3</strong></td>
+<td>Sí (con condiciones)</td>
+<td>Sí</td>
+<td>Sí</td>
+</tr>
+<tr>
+<td><strong>CC BY-NC</strong></td>
+<td>No (solo no comercial)</td>
+<td>Sí</td>
+<td>Sí (con atribución)</td>
+</tr>
+</tbody>
+</table>
+<p>Para proyectos académicos institucionales, las más comunes son MIT o
+Apache 2.0. El docente puede sugerir una si el proyecto lo
+justifica.</p>
+<div class="proyecto">
+<p>En tu proyecto: agregá un archivo <code>LICENSE</code> en la raíz de
+tu repo con la licencia elegida. En <code>docs/</code> o en el README,
+documentá por qué elegiste esa y no otra. Eso cuenta como parte de
+“Documentación técnica y legal” (10% de la nota).</p>
+</div>
+</section>
+<section id="documentación-legal-mínima" class="level2">
+<h2>Documentación legal mínima</h2>
+<p>No necesitás un tratado de abogacía. Necesitás que quede claro:</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Documento</th>
+<th>Qué dice</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LICENSE</code></td>
+<td>Bajo qué condiciones se puede usar tu código.</td>
+</tr>
+<tr>
+<td>README o <code>docs/legal.md</code></td>
+<td>Qué datos personales manejás, cómo los protegés, qué licencia
+elegiste y por qué.</td>
+</tr>
+<tr>
+<td><code>docs/seguridad/</code></td>
+<td>Cómo implementaste controles de acceso y cifrado (mitigaciones del
+threat model).</td>
+</tr>
+</tbody>
+</table>
+<div class="error">
+<p>pensar que “es un proyecto de facultad, no hace falta licencia”. Sin
+licencia, la ley aplica el régimen más restrictivo (todos los derechos
+reservados). Eso significa que ni el docente puede reutilizar tu código
+como ejemplo sin pedirte permiso explícito. Ponerle MIT te protege a vos
+y a la institución.</p>
+</div>
+</section>
+<section id="ética-profesional" class="level2">
+<h2>Ética profesional</h2>
+<p>La U6 del programa PP3 incluye actitudinales de “ética profesional”.
+En concreto para el proyecto:</p>
+<ul>
+<li>No incluir datos personales reales en commits ni tests.</li>
+<li>No compartir claves, tokens ni accesos ajenos.</li>
+<li>Reconocer qué parte del código generó una IA y qué parte revisaste
+vos mismo (está en el Anexo I del programa y en la plantilla de
+PR).</li>
+<li>Defender tus decisiones técnicas con fundamentos, no con “porque lo
+vi en internet”.</li>
+</ul>
+<div class="cierre"><div class="checkpoint">
+<ol type="1">
+<li>¿Qué es un dato personal y qué ley lo regula en Argentina?</li>
+<li>¿Qué licencia aplicaste a tu repo y qué permite que otros hagan con
+tu código?</li>
+<li>¿Qué datos usás en los tests y por qué no podés usar datos de
+personas reales?</li>
+</ol>
+</div><p><strong>Siguiente unidad:</strong> U11 → Auditoría, evaluación, bonus y
+defensa</p></div>
+</section>
+</section>
+<section id="auditoría-evaluación-bonus-y-defensa" class="level1">
+<h1>Auditoría, evaluación, bonus y defensa</h1>
+<p>Todo lo que hiciste en los 3 sprints converge acá: la rúbrica que te
+evalúa, el bonus que te puede sumar un punto, y la defensa donde mostrás
+todo.</p>
+<section id="cómo-se-evalúa-pp3" class="level2">
+<h2>Cómo se evalúa PP3</h2>
+<p>Los pesos oficiales están en el Programa y el Contrato Pedagógico.
+Son fijos:</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Área</th>
+<th>%</th>
+<th>¿Qué mira?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Implementación (funcionalidad y calidad de código)</td>
+<td><strong>40%</strong></td>
+<td>Features funcionando, código limpio, cumplimiento de SPEC</td>
+</tr>
+<tr>
+<td>Testing y calidad</td>
+<td><strong>20%</strong></td>
+<td>Suite de tests, reportes, cobertura de Non-Goals</td>
+</tr>
+<tr>
+<td>Seguridad</td>
+<td><strong>15%</strong></td>
+<td>Threat model, mitigaciones aplicadas, secretos no expuestos</td>
+</tr>
+<tr>
+<td>Documentación técnica y legal</td>
+<td><strong>10%</strong></td>
+<td>SPEC, ADR, informes, licencia, deploy.md</td>
+</tr>
+<tr>
+<td>Gestión del proyecto</td>
+<td><strong>15%</strong></td>
+<td>Commits, PRs, Kanban, cumplimiento de hitos</td>
+</tr>
+</tbody>
+</table>
+<pre><code>     40%  Implementación
+     20%  Testing y calidad
+     15%  Seguridad
+     10%  Documentación
+     15%  Gestión
+    ─────
+    100%</code></pre>
+</section>
+<section id="las-rúbricas-deterministas" class="level2">
+<h2>Las rúbricas deterministas</h2>
+<p>Cada sprint tiene una rúbrica que se publica al abrir el sprint. No
+hay sorpresas: los criterios son públicos y se pueden revisar antes de
+entregar.</p>
+<p>La rúbrica del Sprint 1 está en
+<code>proyecto-pp3-2026/docs/auditoria/RUBRICA_AUDITORIA_S1.md</code>.
+Tiene ítems como:</p>
+<pre><code>Criterio (rúbrica real de S1)              Peso   Indicador (Score 0-100)          Evidencia
+Git Flow y Trazabilidad                    25%    ramas feature/*, PRs con         git log y PRs
+                                                  plantilla, commits trazables
+Auditoría Crítica de Código                35%    errores de código asistido       docs/auditoria/
+                                                  por IA documentados y corregidos
+Calidad Automatizada Local                 20%    linter/formatter corriendo;      PRs y configs
+                                                  checklists completos             de lint
+Seguridad Base                             20%    cero leaks de secrets,           revisión
+                                                  .gitignore funcional             estática</code></pre>
+<p>La rúbrica real no es “todo sí o no”: cada criterio tiene un peso, un
+indicador medible de 0 a 100 y la evidencia que lo verifica.</p>
+<div class="concepto">
+<p><strong>Rúbrica determinista:</strong> instrumento de evaluación
+donde los criterios, los pesos, los indicadores y las evidencias están
+definidos <strong>previamente</strong> para reducir la arbitrariedad.
+Puede contener indicadores binarios, puntajes o ponderaciones explícitas
+— lo determinista es que la regla se conoce antes de entregar, no que
+todo sea sí/no.</p>
+</div>
+</section>
+<section id="los-informes-de-auditoría" class="level2">
+<h2>Los informes de auditoría</h2>
+<p>Cada sprint se cierra con un informe en
+<code>docs/auditoria/auditoria-sprintN.md</code>. Debe contener:</p>
+<ol type="1">
+<li><strong>Checklist del sprint completo</strong> con estado de cada
+ítem.</li>
+<li><strong>Errores hallados en código asistido por IA</strong> y
+correcciones con evidencia (links a PRs).</li>
+<li><strong>Estado del sprint</strong> (PASS / FAIL con
+observaciones).</li>
+</ol>
+<p>El informe no lo escribe el docente: <strong>lo escribís
+vos</strong>. Es parte de la evidencia de que revisaste tu propio
+trabajo.</p>
+<div class="error">
+<p>escribir el informe sin registrar el resultado de la revisión. El
+informe debe documentar qué inspeccionaste, qué evidencia revisaste y el
+resultado obtenido. Si encontraste un defecto, documentá el hallazgo y
+su corrección con links a PRs; si no encontraste defectos, documentá qué
+revisaste y cómo lo verificaste. Los hallazgos ficticios también son un
+problema: inventar errores es tan malo como no revisar.</p>
+</div>
+</section>
+<section
+id="bonus-apéndice-de-testing-de-consistencia-y-trazabilidad-1-punto"
+class="level2">
+<h2>Bonus: Apéndice de Testing de Consistencia y Trazabilidad (+1
+punto)</h2>
+<p>Los estudiantes que completen el apéndice avanzado (consigna completa
+en
+<code>proyecto-adi-2026/trabajos-practicos/apendice-avanzado-testing-consistencia/</code>)
+pueden sumar hasta <strong>+1 punto</strong> sobre la nota final del
+cierre integrador.</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>Criterio</th>
+<th>Bonus</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Matriz de trazabilidad con fuentes vigentes y oráculo
+identificado</td>
+<td>+0.20</td>
+</tr>
+<tr>
+<td>Un flujo crítico con 3 escenarios significativos</td>
+<td>+0.25</td>
+</tr>
+<tr>
+<td>Datos sintéticos aislados, repetibles y protegidos</td>
+<td>+0.20</td>
+</tr>
+<tr>
+<td>Comparación ejecutada y resultado documentado con evidencia de
+desvío o constancia de consistencia</td>
+<td>+0.20</td>
+</tr>
+<tr>
+<td>Defensa individual satisfactoria</td>
+<td>+0.15</td>
+</tr>
+<tr>
+<td><strong>Total máximo</strong></td>
+<td><strong>+1.00</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Reglas: - Se aplica solo al cierre integrador de PP3. - El trabajo
+base debe estar aprobado. - La nota final no puede superar 10. - No
+sustituye entregables obligatorios. - No se duplica en ADI. - Una suite
+generada por IA que el estudiante no pueda explicar <strong>no recibe
+bonus</strong>. - Una prueba sin aserciones significativas no cuenta. -
+Una suite inestable (flaky) no cumple determinismo.</p>
+<div class="simple">
+<p>no es “hacer más tests”. Es demostrar que entendiste qué estás
+testeando, con datos falsos pero realistas, y que podés explicarlo en la
+defensa.</p>
+</div>
+</section>
+<section id="las-10-reglas-de-la-defensa" class="level2">
+<h2>Las 10 reglas de la defensa</h2>
+<p>La defensa oral es individual. Dura 10 minutos (7 de presentación + 3
+de preguntas). Las preguntas del docente se basan en esta lista:</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>#</th>
+<th>Pregunta que vas a tener que responder</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Explicá el flujo elegido y por qué es crítico.</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Identificá el oráculo de cada test.</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Explicá cada escenario y por qué esos tres.</strong></td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Distinguí unitario, integración y E2E con ejemplos de tu
+proyecto.</strong></td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Explicá los datos sintéticos y por qué no usás personas
+reales.</strong></td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Mostrá una aserción significativa y explicá qué
+verifica.</strong></td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>Explicá un hallazgo o resultado de la inspección
+humana.</strong></td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>Distinguí automatización de juicio humano.</strong></td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>Explicá qué harías ante un secreto expuesto.</strong></td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>Reconocé qué parte generó la IA y qué validaste
+personalmente.</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Cada una de estas preguntas está directamente vinculada a una sección
+de este cuadernillo. Si seguiste las unidades, las respuestas las
+tenés.</p>
+<div class="recorda">
+<p><strong>No se evalúa “cuánto código escribiste”. Se evalúa “cuánto
+entendés de lo que hiciste”.</strong> Un proyecto chico pero bien
+defendido puede sacar más nota que uno enorme pero que no se puede
+explicar.</p>
+</div>
+</section>
+<section id="cierre-17-de-noviembre" class="level2">
+<h2>Cierre: 17 de noviembre</h2>
+<p>El último hito del año tiene dos fechas distintas:</p>
+<pre><code>CIERRE TÉCNICO — 17 de noviembre
+  Pipeline CI en verde (protegiendo main)
+  + release v0.1.0 etiquetada, con CHANGELOG
+  + Informe Final PP3 + demo (docs/informe-final.md)
+
+DEFENSA INTEGRADORA (oral) — 19 de noviembre</code></pre>
+<p>El cierre técnico es el <strong>17 de noviembre</strong> y la defensa
+integradora es el <strong>19 de noviembre</strong> (fechas del
+SSOT).</p>
+<div class="proyecto">
+<p><strong>En tu cronograma:</strong> los PRs del Sprint 3 se mergean
+antes del cierre del sprint, el <strong>13 de noviembre</strong>. Luego
+viene el cierre técnico (17 de noviembre: pipeline CI + release v0.1.0
+con CHANGELOG + informe final) y la defensa integradora (19 de
+noviembre).</p>
+</div>
+</section>
+<section id="checklist-de-cierre-lo-que-llevás-a-la-defensa"
+class="level2">
+<h2>Checklist de cierre (lo que llevás a la defensa)</h2>
+<ul class="task-list">
+<li><label><input type="checkbox" />Release v0.1.0 taggeada en GitHub,
+con CHANGELOG.</label></li>
+<li><label><input type="checkbox" />Pipeline CI configurado y pasando
+(al menos lint + tests).</label></li>
+<li><label><input type="checkbox" />3 informes de auditoría
+(<code>auditoria-sprint1/2/3.md</code>).</label></li>
+<li><label><input type="checkbox" /><code>docs/deploy/deploy.md</code>
+completo.</label></li>
+<li><label><input type="checkbox" />Licencia elegida y
+documentada.</label></li>
+<li><label><input type="checkbox" />(Si aplica) Apéndice de testing de
+consistencia.</label></li>
+<li><label><input type="checkbox" />Repositorio público, con README que
+explica de qué se trata.</label></li>
+<li><label><input type="checkbox" /><strong>Vos podés explicar cada
+línea de código que dice ser tuya.</strong></label></li>
+</ul>
+<div class="cierre"><div class="checkpoint">
+<ol type="1">
+<li>¿Cuáles son los 5 pesos de evaluación y su porcentaje?</li>
+<li>¿Cuánto suma el bonus del apéndice y qué condición hace que una
+suite generada por IA no lo reciba?</li>
+<li>Nombrá tres de las diez reglas de la defensa.</li>
+<li>¿Qué tres entregables formales se rinden en el cierre técnico del 17
+de noviembre? ¿Cuándo es la defensa integradora?</li>
+</ol>
+</div></div><hr />
+<p><strong>Fin del cuadernillo PP3 — Coordinación del Proyecto
+Integrador.</strong></p>
+<p>Encontraste un error? Reportalo en
+<code>github.com/IES9018/proyecto-pp3-2026/issues</code>.</p>
+</section>
+</section>
+</body>
+</html>
